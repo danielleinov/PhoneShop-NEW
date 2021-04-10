@@ -8,17 +8,16 @@ import Details from './components/details';
 import Search from './components/search';
 import Login from './components/login';
 
-
 export default function App() {
 
     return (
         <BrowserRouter>
             <div>
+                <Route path="/login" exact component={Login}/>
                 <Header/>
                 <div className="container">
                     <div className="row">
                         <Switch>
-                            <Route path="/login" exact component={Login}/>
                             <Route path="/" exact component={Main}/>
                             <Route path="/phone" component={() => <Details/>}/>
                             <Route path="/search" component={() => <Search/>}/>

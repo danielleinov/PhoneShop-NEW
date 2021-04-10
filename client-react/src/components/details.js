@@ -50,9 +50,6 @@ export default function Details() {
                     <button href="#" className="btn btn-success">Leave a Review</button>
                 </div>
             </div>
-            {/* /.card */}
         </div>
-
     );
-
 }
