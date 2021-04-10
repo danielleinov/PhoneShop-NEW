@@ -12,6 +12,9 @@ export default function Header() {
         else
             history.push('/search?q='+e.target.value);
     }
+    if(window.location.pathname ==='/login'){
+        return null;
+    }
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">

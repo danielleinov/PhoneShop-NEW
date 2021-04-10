@@ -1,4 +1,7 @@
 export default function Footer() {
+    if(window.location.pathname ==='/login'){
+        return null;
+    }
     return (
         <footer className="py-5 bg-dark">
             <div className="container">
