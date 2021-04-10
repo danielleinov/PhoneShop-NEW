@@ -1,52 +1,39 @@
 import "./login.css"
 import React, {useEffect, useState} from "react";
-import { useHistory } from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import axios from "axios";
 
-const App = () => {
-    const history = useHistory();
+export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [user, setUser] = useState();
+
     useEffect(() => {
-        console.log("start");
         const loggedInUser = localStorage.getItem("user");
-        console.log(loggedInUser);
         if (loggedInUser) {
             const foundUser = JSON.parse(loggedInUser);
-            console.log(foundUser)
             setUser(foundUser);
         }
     }, []);
 
-
     const handleSubmit = async e => {
         e.preventDefault();
-        const user = { username, password };
+        const user = {username, password};
         // send the username and password to the server
         const response = await axios.post(
             "http://localhost:8080/api/user/login",
             user
         );
-        console.log("respose data:" + response.data)
         // set the state of the user
         setUser(response.data)
         // store the user in localStorage
         localStorage.setItem('user', JSON.stringify(response.data))
-        console.log(response.data)
     };
 
-// if there's a user show the message below
+    // If there's a user, redirect to main page
     if (user) {
-        history.push("/");
+        return <Redirect to='/'/>
     }
-
-
-
-
-
-
-
 
     // if there's no user, show the login form
     return (
@@ -57,33 +44,33 @@ const App = () => {
                         <div className="card-header">
                             <h3>Sign In</h3>
                             <div className="d-flex justify-content-end social_icon">
-                                <span><i className="fab fa-facebook-square" /></span>
-                                <span><i className="fab fa-google-plus-square" /></span>
-                                <span><i className="fab fa-twitter-square" /></span>
+                                <span><i className="fab fa-facebook-square"/></span>
+                                <span><i className="fab fa-google-plus-square"/></span>
+                                <span><i className="fab fa-twitter-square"/></span>
                             </div>
                         </div>
                         <div className="card-body">
-                                <div className="input-group form-group">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text"><i className="fas fa-user" /></span>
-                                    </div>
-                                    <input type="email" className="form-control" value={username}placeholder="username" onChange={({ target }) => setUsername(target.value)}/>
+                            <div className="input-group form-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"><i className="fas fa-user"/></span>
                                 </div>
-                                <div className="input-group form-group">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text"><i className="fas fa-key" /></span>
-                                    </div>
-                                    <input type="password" className="form-control" value={password} placeholder="password" onChange={({ target }) => setPassword(target.value)}/>
+                                <input type="email" className="form-control" value={username} placeholder="username"
+                                       onChange={({target}) => setUsername(target.value)}/>
+                            </div>
+                            <div className="input-group form-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"><i className="fas fa-key"/></span>
                                 </div>
-                                <div className="form-group">
-                                    <input type="submit" defaultValue="Login" className="btn float-right login_btn" />
-                                </div>
+                                <input type="password" className="form-control" value={password} placeholder="password"
+                                       onChange={({target}) => setPassword(target.value)}/>
+                            </div>
+                            <div className="form-group">
+                                <input type="submit" defaultValue="Login" className="btn float-right login_btn"/>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
     );
-};
-
-export default App;
+}

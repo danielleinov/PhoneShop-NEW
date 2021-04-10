@@ -1,11 +1,10 @@
 import Item from "./item";
 import React from "react";
+import {Redirect} from "react-router-dom";
 
 export default function List({q=''}) {
 
-    
     const [items, setItems] = React.useState([]);
-
     
     React.useEffect(() => {        
 
@@ -13,13 +12,14 @@ export default function List({q=''}) {
         .then((response) => response.json())
         .then((data) => setItems(data));
     }, [q]);
-    
+
+    const loggedInUser = localStorage.getItem("user");
+    if (!loggedInUser) {
+        return <Redirect to='/login'/>
+    }
 
     if (items.length < 1)
         return "";
-        
-
-        
 
     return (
         <div className="row">
@@ -30,7 +30,4 @@ export default function List({q=''}) {
             }            
         </div>
     );
-    
-
-    return "";
 }
