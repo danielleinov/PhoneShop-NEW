@@ -13,9 +13,20 @@ import Login from './components/login';
 
 
 export default function App() {
-  //const history = useHistory();
+  const history = useHistory();
   //const [connectedUser, setConnectedUser] = useState(JSON.parse(localStorage.getItem("user")))
   //const [cloudAccountDetails, setCloudAccountDetails] = useState(JSON.parse(localStorage.getItem("cloudAccount")));
+  const loggedInUser = localStorage.getItem("user");
+  console.log(loggedInUser);
+  if (! loggedInUser) {
+    console.log("I am here")
+    return <Login />
+    // redirect to login page
+  }
+  // useEffect(() => {
+  //   console.log("start");
+  //
+  // }, []);
   return (
     <BrowserRouter>
       <div>
@@ -25,7 +36,7 @@ export default function App() {
           <div className="row">
             {/* /.col-lg-3 */}
             <Switch>
-              <Route path="/login" exact component={Login} />
+              <Route path="/login" exact component={Login}/>
               <Route path="/" exact component={Main} />
               <Route path="/phone" component={() => <Details />} />
               <Route path="/search" component={() => <Search  />} />

@@ -8,7 +8,16 @@ const App = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [user, setUser] = useState();
-
+    useEffect(() => {
+        console.log("start");
+        const loggedInUser = localStorage.getItem("user");
+        console.log(loggedInUser);
+        if (loggedInUser) {
+            const foundUser = JSON.parse(loggedInUser);
+            console.log(foundUser)
+            setUser(foundUser);
+        }
+    }, []);
 
 
     const handleSubmit = async e => {
@@ -19,10 +28,11 @@ const App = () => {
             "http://localhost:8080/api/user/login",
             user
         );
+        console.log("respose data:" + response.data)
         // set the state of the user
         setUser(response.data)
         // store the user in localStorage
-        localStorage.setItem('user', response.data)
+        localStorage.setItem('user', JSON.stringify(response.data))
         console.log(response.data)
     };
 

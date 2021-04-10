@@ -9,7 +9,7 @@ const { validateRequest } = require('../middlewares/SchemaValidator');
 
 router.post('/register', validateRequest(schemaUserRegister),catchAsync(user.register))
 router.post('/login', validateRequest(schemaUserLogin), passport.authenticate('local'),(req,res) => {
-    res.send({status: "ok"})
+    res.json({status: "ok"})
 })
 router.post("/logout", (req, res) => {
     req.logout();
