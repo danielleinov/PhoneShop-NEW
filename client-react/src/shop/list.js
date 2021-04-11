@@ -13,10 +13,10 @@ export default function List({q = ''}) {
             .then((data) => setItems(data));
     }, [q]);
 
-    const loggedInUser = localStorage.getItem("user");
-    if (!loggedInUser) {
-        return <Redirect to='/login'/>
-    }
+    // const loggedInUser = localStorage.getItem("user");
+    // if (!loggedInUser) {
+    //     return <Redirect to='/login'/>
+    // }
 
     if (items.length < 1)
         return "";

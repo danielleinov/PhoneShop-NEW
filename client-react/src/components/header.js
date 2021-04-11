@@ -1,10 +1,14 @@
 import React from "react";
-import {Link, useHistory} from "react-router-dom";
+import {Link, Redirect, useHistory} from "react-router-dom";
 import "./header.css";
 
 export default function Header() {
 
     const history = useHistory();
+
+    const onLogout = (e) => {
+        localStorage.removeItem('user');
+    }
 
     const doSearch = (e) => {
         if (e.target.value === "")
@@ -12,9 +16,10 @@ export default function Header() {
         else
             history.push('/search?q=' + e.target.value);
     }
-    if (window.location.pathname === '/login') {
-        return null;
-    }
+
+    // if (window.location.pathname === '/login') {
+    //     return null;
+    // }
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -32,16 +37,30 @@ export default function Header() {
                                 <span className="sr-only">(current)</span>
                             </Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/login">Login
-                                <span className="sr-only">(current)</span>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/logout">Logout
-                                <span className="sr-only">(current)</span>
-                            </Link>
-                        </li>
+                        )
+                        { !!localStorage.getItem('user') ?
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/" onClick={onLogout}>Logout
+                                    <span className="sr-only">(current)</span>
+                                </Link>
+                            </li>
+                            :
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/login">Login
+                                    <span className="sr-only">(current)</span>
+                                </Link>
+                            </li>
+                        }
+                        {/*<li className="nav-item">*/}
+                        {/*    <Link className="nav-link" to="/login">Login*/}
+                        {/*        <span className="sr-only">(current)</span>*/}
+                        {/*    </Link>*/}
+                        {/*</li>*/}
+                        {/*<li className="nav-item">*/}
+                        {/*    <Link className="nav-link" to="/logout">Logout*/}
+                        {/*        <span className="sr-only">(current)</span>*/}
+                        {/*    </Link>*/}
+                        {/*</li>*/}
                     </ul>
                 </div>
             </div>
