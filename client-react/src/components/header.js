@@ -19,7 +19,7 @@ export default function Header() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div className="container">
-                <a className="navbar-brand" href="#">Start Bootstrap</a>
+                <Link className="navbar-brand" to="/">Start Bootstrap</Link>
                 <input placeholder="Search By Phone Name" className="form-control" onChange={doSearch}/>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,10 +38,9 @@ export default function Header() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Services</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Contact</a>
+                            <Link className="nav-link" to="/logout">Logout
+                                <span className="sr-only">(current)</span>
+                            </Link>
                         </li>
                     </ul>
                 </div>

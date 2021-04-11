@@ -7,25 +7,25 @@ import Main from './components/main';
 import Details from './shop/details';
 import Search from './components/search';
 import Login from './login/login';
+import Logout from "./login/logout";
 
 export default function App() {
 
     return (
         <BrowserRouter>
-            <div>
-                <Route path="/login" exact component={Login}/>
-                <Header/>
-                <div className="container">
-                    <div className="row">
-                        <Switch>
-                            <Route path="/" exact component={Main}/>
-                            <Route path="/phone" component={() => <Details/>}/>
-                            <Route path="/search" component={() => <Search/>}/>
-                        </Switch>
-                    </div>
+            <Route path="/login" exact component={Login}/>
+            <Route path="/logout" exact component={Logout}/>
+            <Header/>
+            <div className="container">
+                <div className="row">
+                    <Switch>
+                        <Route path="/" exact component={Main}/>
+                        <Route path="/phone" component={() => <Details/>}/>
+                        <Route path="/search" component={() => <Search/>}/>
+                    </Switch>
                 </div>
-                <Footer/>
             </div>
+            <Footer/>
         </BrowserRouter>
     );
 }
