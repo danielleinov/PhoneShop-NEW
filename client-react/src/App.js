@@ -4,9 +4,9 @@ import Footer from './components/footer';
 import Header from './components/header';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Main from './components/main';
-import Details from './components/details';
+import Details from './shop/details';
 import Search from './components/search';
-import Login from './components/login';
+import Login from './login/login';
 
 export default function App() {
 

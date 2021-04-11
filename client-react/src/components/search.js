@@ -1,4 +1,4 @@
-import List from "./list";
+import List from "../shop/list";
 
 export default function Search() {
 
@@ -14,7 +14,6 @@ export default function Search() {
                 </ol>
             </div>
             <List q={'/name/' + q}/>
-            {/* /.row */}
         </div>
     );
 }

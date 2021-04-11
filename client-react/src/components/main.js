@@ -1,4 +1,4 @@
-import List from "./list";
+import List from "../shop/list";
 
 export default function Main() {
     return (
@@ -30,7 +30,6 @@ export default function Main() {
                 </a>
             </div>
             <List/>
-            {/* /.row */}
         </div>
     );
 }

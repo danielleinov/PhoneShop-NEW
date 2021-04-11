@@ -37,7 +37,7 @@ export default function Login() {
 
     // if there's no user, show the login form
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="login" onSubmit={handleSubmit}>
             <div className="container">
                 <div className="d-flex justify-content-center h-100">
                     <div className="card">
