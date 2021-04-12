@@ -37,7 +37,6 @@ export default function Header() {
                                 <span className="sr-only">(current)</span>
                             </Link>
                         </li>
-                        )
                         { !!localStorage.getItem('user') ?
                             <li className="nav-item">
                                 <Link className="nav-link" to="/" onClick={onLogout}>Logout
