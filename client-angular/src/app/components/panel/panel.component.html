@@ -1,0 +1,9 @@
+<div>
+  <input #inpDisplayName placeholder="displayName">
+  <input #inpDescription placeholder="description">
+  <input #inpPrice type="number">
+  <input #inpDiscount type="number" >
+  <button (click)="onAdd(inpDisplayName.value, inpDescription.value, inpPrice.valueAsNumber, inpDiscount.valueAsNumber)">Add</button>
+  <button (click)="onRefresh()">Refresh</button>
+  <button (click)="onScrape()">Import</button>
+</div>
