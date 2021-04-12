@@ -1,6 +1,6 @@
 import Item from "./item";
 import React from "react";
-import {Redirect} from "react-router-dom";
+import {BrowserRouter, Redirect} from "react-router-dom";
 
 export default function List({q = ''}) {
 
@@ -22,13 +22,17 @@ export default function List({q = ''}) {
         return "";
 
     return (
-        <div className="row">
-            {
-                items.map((data, key) => {
-                    return <Item name={data.displayName} price={data.price} key={key} id={data._id}
-                                 description={data.description}/>;
-                })
-            }
+        <div className="container">
+            <div className="row">
+                <div className="row">
+                    {
+                        items.map((data, key) => {
+                            return <Item name={data.displayName} price={data.price} key={key} id={data._id}
+                                         description={data.description}/>;
+                        })
+                    }
+                </div>
+            </div>
         </div>
     );
 }

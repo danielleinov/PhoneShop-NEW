@@ -10,7 +10,6 @@ import Login from './login/login';
 
 export default function App() {
 
-
     // A wrapper for <Route> that redirects to the login
     // screen if you're not yet authenticated.
     function PrivateRoute({children, ...rest}) {
@@ -42,21 +41,17 @@ export default function App() {
 
     return (
         <BrowserRouter>
-            <div className="container">
-                <div className="row">
-                    <Switch>
-                        {/* public routes go here*/}
-                        <Route path="/" exact component={() => withHeaderAndFooter(Main)}/>
-                        <Route path="/login" exact component={Login}/>
+            <Switch>
+                {/* public routes go here*/}
+                <Route path="/" exact component={() => withHeaderAndFooter(Main)}/>
+                <Route path="/login" exact component={Login}/>
 
-                        {/* private routes go here */}
-                        <PrivateRoute>
-                            <Route path="/phone" component={() => withHeaderAndFooter(Details)}/>
-                            <Route path="/search" component={() => withHeaderAndFooter(Search)}/>
-                        </PrivateRoute>
-                    </Switch>
-                </div>
-            </div>
+                {/* private routes go here */}
+                <PrivateRoute>
+                    <Route path="/phone" component={() => withHeaderAndFooter(Details)}/>
+                    <Route path="/search" component={() => withHeaderAndFooter(Search)}/>
+                </PrivateRoute>
+            </Switch>
         </BrowserRouter>
     );
 }
