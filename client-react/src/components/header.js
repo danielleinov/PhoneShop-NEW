@@ -24,7 +24,7 @@ export default function Header() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div className="container">
-                <Link className="navbar-brand" to="/">Start Bootstrap</Link>
+                <Link className="navbar-brand" to="/">Phoney</Link>
                 <input placeholder="Search By Phone Name" className="form-control" onChange={doSearch}/>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
