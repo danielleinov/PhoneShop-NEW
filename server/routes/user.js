@@ -7,6 +7,11 @@ const catchAsync = require('../utils/catchAsync');
 const {schemaUserRegister, schemaUserLogin} = require('../schemas');
 const {validateRequest} = require('../middlewares/SchemaValidator');
 
+router.route('/').get(catchAsync(user.getUsers))
+router.route('/:id')
+    .get(catchAsync(user.getUserById))
+    .delete(catchAsync(user.deleteUserById))
+
 router.post('/register', validateRequest(schemaUserRegister), catchAsync(user.register))
 router.post('/login', validateRequest(schemaUserLogin), passport.authenticate('local'),
     function(req, res) {

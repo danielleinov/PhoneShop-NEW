@@ -31,7 +31,9 @@ module.exports.getPhoneById = async (req, res) => {
     const {id} = req.params;
     const phone = await Phone.findById(id).populate("reviews");
     if (!phone) {
-        return res.status(404).send('That phone Not found');
+        return res.status(404).json({
+            "error": "Could not find phone with ID " + id
+        });
     }
     res.send(phone)
 }
