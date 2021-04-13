@@ -22,4 +22,7 @@ const schema = new mongoose.Schema(
     { timestamps: true }
 );
 
+schema.statics.saveAndPopulate = function(doc) {
+    return doc.save().then(doc => doc.populate('phones').execPopulate())
+}
 module.exports = mongoose.model("Cart", schema);

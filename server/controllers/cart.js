@@ -7,27 +7,31 @@ module.exports.addCart = async (req, res) => {
     if (cart) {
 
         //cart exists for user
-        let itemIndex = cart.phones.findIndex(p => p.phoneId === phoneId);
-
+        let itemIndex = cart.phones.findIndex(p => p.id == phoneId);
+        console.log(itemIndex)
         if (itemIndex > -1) {
+
             //product exists in the cart, update the quantity
-            let productItem = cart.products[itemIndex];
+            let productItem = cart.phones[itemIndex];
+            console.log(productItem)
             productItem.quantity = quantity;
-            cart.products[itemIndex] = productItem;
+            cart.phones[itemIndex] = productItem;
         } else {
             //product does not exists in cart, add new item
-            cart.products.push({ productId, quantity, name, price });
+            cart.phones.push({ id: phoneId, quantity: quantity});
         }
-        cart = await cart.save();
-        return res.status(201).send(cart);
+        cart = await Cart.saveAndPopulate(cart);
+        return res.json(cart);
     } else {
         //no cart for user, create new cart
-        const newCart = await Cart.create({
+        const newCart = new Cart({
             userId,
-            products: [{productId, quantity, name, price}]
+            phones: [{id: phoneId, quantity: quantity}]
         });
 
-        return res.status(201).send(newCart);
+        cart = await Cart.saveAndPopulate(newCart);
+
+        return res.json(cart);
     }
 }
 
