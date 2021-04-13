@@ -19,14 +19,14 @@ export class PhonesService {
 
   addPhone(displayName: string, description: string, price: number, discount: number): Observable<Phone> {
     return this.http.post<Phone>(this.phonesUrl, {
-      displayName : displayName,
-      description : description,
+      displayName: displayName,
+      description: description,
       price: price,
       discount: discount
     });
   }
 
-  getPhone(id: number): Observable<Phone> {
+  getPhone(id: string): Observable<Phone> {
     const url = `${this.phonesUrl}/${id}`;
     return this.http.get<Phone>(url);
   }
@@ -36,7 +36,7 @@ export class PhonesService {
     return this.http.patch<Phone>(url, {displayName: phone.displayName});
   }
 
-  deletePhone(id: number): Observable<Phone> {
+  deletePhone(id: string): Observable<Phone> {
     const url = `${this.phonesUrl}/${id}`;
     return this.http.delete<Phone>(url);
   }

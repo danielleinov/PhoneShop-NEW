@@ -1,5 +1,5 @@
 export interface Phone {
-  _id: number,
+  _id: string,
   displayName: string,
   description: string,
   price: number,
