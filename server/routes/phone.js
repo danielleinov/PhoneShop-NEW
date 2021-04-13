@@ -12,6 +12,7 @@ router.route('/')
     .get(catchAsync(Phone.getPhones))
 router.route('/:id')
     .get(catchAsync(Phone.getPhoneById))
+    .delete(catchAsync(Phone.deletePhoneById))
 router.route('/name/:name')
     .get(catchAsync(Phone.getPhoneByName))
 module.exports = router;
