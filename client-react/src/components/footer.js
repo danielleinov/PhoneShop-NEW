@@ -4,7 +4,6 @@ export default function Footer() {
             <div className="container">
                 <p className="m-0 text-center text-white">Copyright © Your Website 2020</p>
             </div>
-            {/* /.container */}
         </footer>
     );
 }
