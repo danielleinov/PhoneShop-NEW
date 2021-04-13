@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  phonesUrl: 'http://localhost:8080/api/phone'
+  phonesUrl: 'http://localhost:8080/api/phone',
+  usersUrl: 'http://localhost:8080/api/user'
 };
 
 /*
