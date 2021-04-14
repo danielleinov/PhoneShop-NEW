@@ -18,14 +18,12 @@ export class DashboardComponent implements OnInit {
   reviews: Review[] = [];
 
   chartData = []
-  chartTitle = "";
 
   constructor(private phonesService: PhonesService,
               private usersService: UsersService,
               private reviewsService: ReviewsService){}
 
   ngOnInit() {
-    this.chartTitle = "Components Distribution"
     this.load();
   }
 
