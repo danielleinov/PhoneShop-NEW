@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import React from "react";
 
 export default function Item({name, price, id, description}) {
     return (
@@ -14,7 +15,7 @@ export default function Item({name, price, id, description}) {
                     <p className="card-text">{description}</p>
                 </div>
                 <div className="card-footer">
-                    <small className="text-muted">★ ★ ★ ★ ☆</small>
+                    <Link to={'/phone/' + id}><button  className="btn btn-success">Add To Cart</button></Link>
                 </div>
             </div>
         </div>
