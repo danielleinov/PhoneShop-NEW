@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {ListComponent} from './components/list/list.component';
-import {PanelComponent} from './components/panel/panel.component';
 import {DetailsComponent} from './components/details/details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -16,7 +15,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   declarations: [
     AppComponent,
     ListComponent,
-    PanelComponent,
     DetailsComponent,
     UsersComponent,
     DashboardComponent
