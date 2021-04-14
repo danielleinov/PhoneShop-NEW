@@ -9,12 +9,13 @@ module.exports.addCart = async (req, res) => {
         //cart exists for user
         let itemIndex = cart.phones.findIndex(p => p.id == phoneId);
         console.log(itemIndex)
+        cart.totalQuantity += quantity;
         if (itemIndex > -1) {
 
             //product exists in the cart, update the quantity
             let productItem = cart.phones[itemIndex];
             console.log(productItem)
-            productItem.quantity = quantity;
+            productItem.quantity += quantity;
             cart.phones[itemIndex] = productItem;
         } else {
             //product does not exists in cart, add new item
@@ -26,7 +27,8 @@ module.exports.addCart = async (req, res) => {
         //no cart for user, create new cart
         const newCart = new Cart({
             userId,
-            phones: [{id: phoneId, quantity: quantity}]
+            phones: [{id: phoneId, quantity: quantity}],
+            totalQuantity: quantity
         });
 
         cart = await Cart.saveAndPopulate(newCart);

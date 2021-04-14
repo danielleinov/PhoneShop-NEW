@@ -10,6 +10,9 @@ const schema = new mongoose.Schema(
             id: { type: mongoose.Schema.Types.ObjectId, ref: "Phone", required: true },
             quantity: { type: Number, required: true }
         }],
+        totalQuantity: {
+            type: Number
+        },
         active: {
             type: Boolean,
             default: true
