@@ -10,6 +10,7 @@ import {DetailsComponent} from './components/details/details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UsersComponent } from './components/users/users.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { UsersComponent } from './components/users/users.component';
     ListComponent,
     PanelComponent,
     DetailsComponent,
-    UsersComponent
+    UsersComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
