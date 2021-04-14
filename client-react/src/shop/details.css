@@ -26,8 +26,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    height: 100%;
 }
 
+.card-img {
+    height: 100%;
+}
 
 /*@media (min-width: 1px) {*/
 /*    .col-lg-9 {*/

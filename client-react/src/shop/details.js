@@ -60,12 +60,13 @@ export default function Details() {
         return "";
 
     return (
-        <div className="root">
+        <div className="root" >
             <div className="loader-container" >
                 <div className={loading ? "loader" : ""}></div>
             </div>
+            <div class="card mr-4">
+                <img class="card-img" src="http://placehold.it/900x400" alt="Card image" /></div>
             <div className="card mt-4 mr-4" >
-                <img className="card-img-top img-fluid" src="http://placehold.it/900x400" alt="" />
                 <div className="card-body">
                     <h3 className="card-title">{phoneDetails.displayName}</h3>
                     <h4>{phoneDetails.price}$</h4>
