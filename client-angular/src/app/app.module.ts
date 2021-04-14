@@ -12,6 +12,7 @@ import { UsersComponent } from './components/users/users.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { GraphDirective } from './directives/graph.directive';
 import { ReviewsComponent } from './components/reviews/reviews.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
     UsersComponent,
     DashboardComponent,
     GraphDirective,
-    ReviewsComponent
+    ReviewsComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,

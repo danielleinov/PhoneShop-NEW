@@ -17,25 +17,32 @@ export class DashboardComponent implements OnInit {
   users: User[] = [];
   reviews: Review[] = [];
 
+  chartData = []
+  chartTitle = "";
+
   constructor(private phonesService: PhonesService,
               private usersService: UsersService,
               private reviewsService: ReviewsService){}
 
   ngOnInit() {
+    this.chartTitle = "Components Distribution"
     this.load();
   }
 
   load() {
     this.phonesService.getPhones().subscribe(data => {
       this.phones = data;
+      this.chartData.push({"Component": "Phones", "Count": data.length});
     });
 
     this.usersService.getUsers().subscribe(data => {
       this.users = data;
+      this.chartData.push({"Component": "Users", "Count": data.length});
     })
 
     this.reviewsService.getReviews().subscribe(data => {
       this.reviews = data;
+      this.chartData.push({"Component": "Reviews", "Count": data.length});
     })
   }
 
