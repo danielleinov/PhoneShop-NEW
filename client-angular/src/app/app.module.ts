@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import {AppComponent} from './app.component';
-import {ListComponent} from './components/list/list.component';
+import {PhonesComponent} from './components/phones/phones.component';
 import {DetailsComponent} from './components/details/details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -16,7 +16,7 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
+    PhonesComponent,
     DetailsComponent,
     UsersComponent,
     DashboardComponent,

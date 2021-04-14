@@ -5,13 +5,13 @@ import {CurrentPhoneService} from 'src/app/services/current-phone.service';
 
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css',
+  templateUrl: './phones.component.html',
+  styleUrls: ['./phones.component.css',
     '../../vendor/fontawesome-free/css/all.min.css',
     '../../vendor/datatables/dataTables.bootstrap4.min.css'
   ]
 })
-export class ListComponent {
+export class PhonesComponent {
 
   phones: Phone[] = [];
 
