@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, {useState} from 'react';
 import Footer from './components/footer';
 import Header from './components/header';
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
@@ -29,26 +29,27 @@ export default function App() {
             />
         );
     }
+    const value = localStorage.getItem('cartTotal') ? localStorage.getItem('cartTotal') : 0
+    const [count, setCount] = useState(value);
 
     // higher order component
     const withHeaderAndFooter = (Comp) => (
         <>
-            <Header/>
-            <Comp/>
+            <Header count={count} onCountChange={setCount}/>
+            <Comp count={count} onCountChange={setCount}/>
             <Footer/>
         </>
     )
-
     return (
         <BrowserRouter>
             <Switch>
                 {/* public routes go here*/}
-                <Route path="/" exact component={() => withHeaderAndFooter(Main)}/>
+                <Route path="/"  exact component={() => withHeaderAndFooter(Main)}/>
                 <Route path="/login" exact component={Login}/>
 
                 {/* private routes go here */}
                 <PrivateRoute>
-                    <Route path="/phone" component={() => withHeaderAndFooter(Details)}/>
+                    <Route path="/phone"  component={() => withHeaderAndFooter(Details)}/>
                     <Route path="/search" component={() => withHeaderAndFooter(Search)}/>
                 </PrivateRoute>
             </Switch>

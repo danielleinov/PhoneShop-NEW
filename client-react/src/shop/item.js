@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
 import React, {useEffect} from "react";
 import axios from "axios";
+import List from "./list";
 
-export default function Item({name, price, id, description}) {
-
+export default function Item({name, price, id, description, count , onCountChange}) {
 
     const fetchData = async () => {
         const userId = JSON.parse(localStorage.getItem("user"))._id;
@@ -19,6 +19,7 @@ export default function Item({name, price, id, description}) {
         const cartDetails = JSON.stringify(response.data);
         localStorage.setItem('cart', cartDetails);
         localStorage.setItem('cartTotal', JSON.parse(cartDetails).totalQuantity);
+        onCountChange(JSON.parse(cartDetails).totalQuantity);
     };
 
     return (
