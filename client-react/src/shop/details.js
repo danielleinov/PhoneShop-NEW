@@ -66,7 +66,7 @@ export default function Details() {
             </div>
             <div class="card mr-4">
                 <img class="card-img" src="http://placehold.it/900x400" alt="Card image" /></div>
-            <div className="card mt-4 mr-4" >
+            <div className="card mr-4" >
                 <div className="card-body">
                     <h3 className="card-title">{phoneDetails.displayName}</h3>
                     <h4>{phoneDetails.price}$</h4>
