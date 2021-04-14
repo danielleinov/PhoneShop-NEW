@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.6",
     "config": "^3.3.3",
     "cors": "^2.8.5",
     "custom-env": "^2.0.1",

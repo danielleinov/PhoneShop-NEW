@@ -10,6 +10,8 @@ const {schemaPhone} = require('../schemas');
 router.route('/')
     .post(validateRequest(schemaPhone), catchAsync(Phone.addPhone))
     .get(catchAsync(Phone.getPhones))
+router.route('/scrape')
+    .get(catchAsync(Phone.scrape))
 router.route('/:id')
     .get(catchAsync(Phone.getPhoneById))
     .delete(catchAsync(Phone.deletePhoneById))
