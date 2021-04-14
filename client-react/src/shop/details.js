@@ -4,17 +4,13 @@ import axios from "axios";
 
 export default function Details() {
 
+    const phoneId = window.location.pathname.split("/")[2];
+
     const [phoneDetails, setPhoneDetails] = React.useState(null);
     const [reviewContent, setReviewContent] = useState("");
     const [user, setUser] = useState();
 
-    const SubmitReview = async e => {
-        const review = {phoneDetails.phoneId,reviewContent,user.username };
-        const response = await axios.post(
-            "http://localhost:8080/api/review/",
-            review
-        );
-    }
+
 
     React.useEffect(() => {
         const index = window.location.toString().lastIndexOf('/') + 1;
@@ -30,6 +26,16 @@ export default function Details() {
             .then((response) => response.json())
             .then((data) => setPhoneDetails(data));
     }, []);
+
+    const SubmitReview = async e => {
+
+        const review = {phoneId: phoneId, content: reviewContent, author: user.name };
+        const response = await axios.post(
+            "http://localhost:8080/api/review/",
+            review
+        );
+        // Refresh page
+    }
 
     if (phoneDetails === null)
         return "";
@@ -64,8 +70,8 @@ export default function Details() {
                         })
 
                     }
-                    <input type="text" name="name" onClick={SubmitReview} value={reviewContent} placeholder="Write a review" onChange={({target}) => setReviewContent(target.value)}/>
-                    <button href="#" className="btn btn-success">Leave a Review</button>
+                    <input type="text" name="name" value={reviewContent} placeholder="Write a review" onChange={({target}) => setReviewContent(target.value)}/>
+                    <button onClick={SubmitReview} className="btn btn-success">Leave a Review</button>
                 </div>
             </div>
         </div>
