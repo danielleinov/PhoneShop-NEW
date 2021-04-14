@@ -10,6 +10,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UsersComponent } from './components/users/users.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { GraphDirective } from './directives/graph.directive';
+import { ReviewsComponent } from './components/reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ListComponent,
     DetailsComponent,
     UsersComponent,
-    DashboardComponent
+    DashboardComponent,
+    GraphDirective,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,

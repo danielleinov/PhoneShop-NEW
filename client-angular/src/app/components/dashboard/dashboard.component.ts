@@ -3,6 +3,8 @@ import {Phone} from "../../models/phone";
 import {PhonesService} from "../../services/phones.service";
 import {User} from "../../models/user";
 import {UsersService} from "../../services/users.service";
+import {ReviewsService} from "../../services/reviews.service";
+import {Review} from "../../models/review";
 
 @Component({
   selector: 'app-dashboard',
@@ -13,9 +15,11 @@ export class DashboardComponent implements OnInit {
 
   phones: Phone[] = [];
   users: User[] = [];
+  reviews: Review[] = [];
 
   constructor(private phonesService: PhonesService,
-              private usersService: UsersService){}
+              private usersService: UsersService,
+              private reviewsService: ReviewsService){}
 
   ngOnInit() {
     this.load();
@@ -28,6 +32,10 @@ export class DashboardComponent implements OnInit {
 
     this.usersService.getUsers().subscribe(data => {
       this.users = data;
+    })
+
+    this.reviewsService.getReviews().subscribe(data => {
+      this.reviews = data;
     })
   }
 
