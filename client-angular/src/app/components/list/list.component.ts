@@ -34,7 +34,9 @@ export class ListComponent {
     }
 
     onAdd(displayName: string, description: string, price: number, discount: number) {
-        this.phonesService.addPhone(displayName, description, price, discount);
+        this.phonesService.addPhone(displayName, description, price, discount).subscribe(() => {
+          this.load();
+        });
     }
 
     onDelete(phoneId: string) {
