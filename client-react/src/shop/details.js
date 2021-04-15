@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React,{useState} from "react";
 import axios from "axios";
 import './details.css';
 
@@ -49,7 +49,7 @@ export default function Details() {
     const SubmitReview = async e => {
         setLoading(true)
         const review = {phoneId: phoneId, content: reviewContent, author: user.name };
-        const response = await axios.post(
+        await axios.post(
             "http://localhost:8080/api/review/",
             review
         );

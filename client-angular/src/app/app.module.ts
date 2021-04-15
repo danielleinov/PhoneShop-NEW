@@ -13,6 +13,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,8 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]

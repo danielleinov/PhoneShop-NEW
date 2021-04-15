@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Phone} from "../../models/phone";
 import {PhonesService} from "../../services/phones.service";
 import {User} from "../../models/user";
 import {UsersService} from "../../services/users.service";
 import {ReviewsService} from "../../services/reviews.service";
 import {Review} from "../../models/review";
+import {RealtimeService} from "../../services/realtime.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -18,10 +19,14 @@ export class DashboardComponent implements OnInit {
   reviews: Review[] = [];
 
   chartData = []
+  counter: Number;
 
   constructor(private phonesService: PhonesService,
               private usersService: UsersService,
-              private reviewsService: ReviewsService){}
+              private reviewsService: ReviewsService,
+              private realtimeService: RealtimeService) {
+    realtimeService.currentCounter.subscribe(counter => this.counter = counter);
+  }
 
   ngOnInit() {
     this.load();

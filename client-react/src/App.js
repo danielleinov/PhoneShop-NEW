@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import io from "socket.io-client";
 import Footer from './components/footer';
 import Header from './components/header';
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
@@ -7,6 +8,8 @@ import Main from './components/main';
 import Details from './shop/details';
 import Search from './components/search';
 import Login from './login/login';
+
+const socket = io.connect("http://localhost:8080");
 
 export default function App() {
 
