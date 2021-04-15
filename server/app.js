@@ -19,7 +19,7 @@ require('custom-env').env(process.env.NODE_ENV, './config');
 const app = express();
 
 // Database connection
-const mongooseOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+const mongooseOptions = {useNewUrlParser: true, useUnifiedTopology: true, 'useCreateIndex': true};
 mongoose.connect(process.env.CONNECTION_STRING, mongooseOptions)
     .then(() => console.log("Now connected to MongoDB!"))
     .catch((err) => console.error("Something went wrong", err));
