@@ -17,12 +17,14 @@
     "cors": "^2.8.5",
     "custom-env": "^2.0.1",
     "express": "^4.17.1",
+    "http": "0.0.1-security",
     "joi": "^10.6.0",
     "joi-objectid": "^2.0.0",
     "mongoose": "^5.11.11",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^6.1.0"
+    "passport-local-mongoose": "^6.1.0",
+    "socket.io": "^4.0.1"
   }
 }
