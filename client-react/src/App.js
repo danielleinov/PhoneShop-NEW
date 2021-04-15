@@ -1,12 +1,13 @@
 import './App.css';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Footer from './components/footer';
 import Header from './components/header';
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import Main from './components/main';
 import Details from './shop/details';
 import Search from './components/search';
 import Login from './login/login';
+import Cart from './cart/cart';
 
 export default function App() {
 
@@ -29,9 +30,14 @@ export default function App() {
             />
         );
     }
-    const value = localStorage.getItem('cartTotal') ? localStorage.getItem('cartTotal') : 0
-    const [count, setCount] = useState(value);
+    const [ data, setData ] = useState();
 
+
+    const [count, setCount] = useState(0);
+    useEffect(() => {
+        fetch('http://localhost:8080/api/cart/user/' + JSON.parse(localStorage.getItem("user"))._id).then((response) => response.json()).then((data) => {setCount(data.totalQuantity)})
+
+    },[])
     // higher order component
     const withHeaderAndFooter = (Comp) => (
         <>
@@ -41,6 +47,7 @@ export default function App() {
         </>
     )
     return (
+
         <BrowserRouter>
             <Switch>
                 {/* public routes go here*/}
@@ -51,6 +58,7 @@ export default function App() {
                 <PrivateRoute>
                     <Route path="/phone"  component={() => withHeaderAndFooter(Details)}/>
                     <Route path="/search" component={() => withHeaderAndFooter(Search)}/>
+                    <Route path="/cart" component={() => withHeaderAndFooter(Cart)}/>
                 </PrivateRoute>
             </Switch>
         </BrowserRouter>

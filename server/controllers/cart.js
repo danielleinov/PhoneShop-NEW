@@ -37,3 +37,11 @@ module.exports.addCart = async (req, res) => {
     }
 }
 
+module.exports.getCartByUserId = async (req, res) => {
+    const {userId} = req.params;
+    let cart = await Cart.findOne({ userId });
+    if (!cart) {
+        return res.status(404).send('That cart Not found');
+    }
+    return res.json(cart);
+}
