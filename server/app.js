@@ -19,7 +19,7 @@ require('custom-env').env(process.env.NODE_ENV, './config');
 const app = express();
 
 // Database connection
-const mongooseOptions = {useNewUrlParser: true, useUnifiedTopology: true, 'useCreateIndex': true};
+const mongooseOptions = {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true};
 mongoose.connect(process.env.CONNECTION_STRING, mongooseOptions)
     .then(() => console.log("Now connected to MongoDB!"))
     .catch((err) => console.error("Something went wrong", err));
@@ -65,12 +65,22 @@ const io = socketIo(server, {
 
 var count = 0;
 io.on('connection', (socket) => {
+    setInterval(function(){
+        socket.broadcast.emit('count', count);
+    }, 1000);
+
     if (socket.handshake.headers.origin === "http://localhost:3000") {
         count++;
         socket.broadcast.emit('count', count);
 
         socket.on('disconnect', () => {
             count--;
+            socket.broadcast.emit('count', count);
+        });
+    }
+    else {
+        socket.on('update', (newCount) => {
+            count = newCount;
             socket.broadcast.emit('count', count);
         });
     }

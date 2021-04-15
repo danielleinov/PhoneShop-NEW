@@ -19,13 +19,13 @@ export class DashboardComponent implements OnInit {
   reviews: Review[] = [];
 
   chartData = []
-  counter: Number;
+  activeSessionsCounter: Number;
 
   constructor(private phonesService: PhonesService,
               private usersService: UsersService,
               private reviewsService: ReviewsService,
               private realtimeService: RealtimeService) {
-    realtimeService.currentCounter.subscribe(counter => this.counter = counter);
+    realtimeService.currentCounter.subscribe(counter => this.activeSessionsCounter = counter);
   }
 
   ngOnInit() {
@@ -47,6 +47,10 @@ export class DashboardComponent implements OnInit {
       this.reviews = data;
       this.chartData.push({"Component": "Reviews", "Count": data.length});
     })
+  }
+
+  onUpdateActiveSessions(newCount: Number) {
+    this.realtimeService.updateCurrent(newCount);
   }
 
 }
