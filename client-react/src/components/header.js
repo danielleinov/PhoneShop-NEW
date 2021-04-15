@@ -22,8 +22,7 @@ export default function Header({count, onCountChange}) {
     //     return null;
     // }
 
-    console.log(JSON.parse(localStorage.getItem("cart"))._id)
-    const route = JSON.parse(localStorage.getItem("cart"))._id ? `/cart/${JSON.parse(localStorage.getItem("cart"))._id}`: ""
+    const route = JSON.parse(localStorage.getItem("cart")) ? `/cart/${JSON.parse(localStorage.getItem("cart"))._id}`: ""
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">

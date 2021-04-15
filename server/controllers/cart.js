@@ -1,13 +1,15 @@
 const Cart = require('../models/cart');
+const Phone = require('../models/phone')
 
 module.exports.addCart = async (req, res) => {
     const { userId, phoneId, quantity} = req.body;
     let cart = await Cart.findOne({ userId });
-
+    let phone = await Phone.findById(phoneId);
     if (cart) {
 
         //cart exists for user
-        let itemIndex = cart.phones.findIndex(p => p.id == phoneId);
+        let itemIndex = cart.phones.findIndex(p => p.phone._id == phoneId);
+
         console.log(itemIndex)
         cart.totalQuantity += quantity;
         if (itemIndex > -1) {
@@ -16,10 +18,11 @@ module.exports.addCart = async (req, res) => {
             let productItem = cart.phones[itemIndex];
             console.log(productItem)
             productItem.quantity += quantity;
+            productItem.totalPricePhone = phone.price * productItem.quantity;
             cart.phones[itemIndex] = productItem;
         } else {
             //product does not exists in cart, add new item
-            cart.phones.push({ id: phoneId, quantity: quantity});
+            cart.phones.push({ phone: phoneId, quantity: quantity, totalPricePhone: phone.price * quantity});
         }
         cart = await Cart.saveAndPopulate(cart);
         return res.json(cart);
@@ -27,7 +30,7 @@ module.exports.addCart = async (req, res) => {
         //no cart for user, create new cart
         const newCart = new Cart({
             userId,
-            phones: [{id: phoneId, quantity: quantity}],
+            phones: [{phone: phoneId, quantity: quantity, totalPricePhone: phone.price * quantity }],
             totalQuantity: quantity
         });
 
@@ -39,7 +42,7 @@ module.exports.addCart = async (req, res) => {
 
 module.exports.getCartByUserId = async (req, res) => {
     const {userId} = req.params;
-    let cart = await Cart.findOne({ userId });
+    let cart = await Cart.findOne({ userId }).populate('phones.phone');
     if (!cart) {
         return res.status(404).send('That cart Not found');
     }

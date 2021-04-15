@@ -1,8 +1,13 @@
 import React from "react";
 import "./cart.css"
+import {Link} from "react-router-dom";
 
 export default function Cart() {
-
+    const cart = JSON.parse(localStorage.getItem("cart"))
+    let totalPrice = 0;
+    cart.phones.map((data, key) => {
+        totalPrice += data.totalPricePhone;
+    });
     return (
         <div className="container mb-4">
             <div className="row">
@@ -19,37 +24,29 @@ export default function Cart() {
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            {
+                                cart.phones.map((data, key) => {
+                                    console.log(data)
+                                    return([
+                                        <tr>
 
-                                <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                                <td>Product Name Dada</td>
-                                <td className="text-right">1</td>
-                                <td className="text-right">124,90 €</td>
-                                <td className="text-right"><button className="btn btn-sm btn-danger"><i className="fa fa-trash" /> </button> </td>
-                            </tr>
-                            <tr>
-                                <td />
-                                <td />
-                                <td />
-                                <td />
-                                <td>Sub-Total</td>
-                                <td className="text-right">255,90 €</td>
-                            </tr>
-                            <tr>
-                                <td />
-                                <td />
-                                <td />
-                                <td />
-                                <td>Shipping</td>
-                                <td className="text-right">6,90 €</td>
-                            </tr>
+                                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                                            <td key={key}>{data.phone.displayName}</td>
+                                            <td className="text-right">{data.quantity}</td>
+                                            <td className="text-right">{data.totalPricePhone} €</td>
+                                            <td className="text-right"><button className="btn btn-sm btn-danger"><i className="fa fa-trash" /> </button> </td>
+                                        </tr>
+                                    ])
+
+                                })
+                            }
                             <tr>
                                 <td />
                                 <td />
                                 <td />
                                 <td />
                                 <td><strong>Total</strong></td>
-                                <td className="text-right"><strong>346,90 €</strong></td>
+                                <td className="text-right"><strong>{totalPrice} €</strong></td>
                             </tr>
                             </tbody>
                         </table>
@@ -58,7 +55,7 @@ export default function Cart() {
                 <div className="col mb-2">
                     <div className="row">
                         <div className="col-sm-12  col-md-6">
-                            <button className="btn btn-block btn-light">Continue Shopping</button>
+                            <Link to={'/'}><button className="btn btn-block btn-light">Continue Shopping</button></Link>
                         </div>
                         <div className="col-sm-12 col-md-6 text-right">
                             <button className="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>

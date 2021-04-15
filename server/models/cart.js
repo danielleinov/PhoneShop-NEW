@@ -7,8 +7,9 @@ const schema = new mongoose.Schema(
             ref: "User"
         },
         phones: [{
-            id: { type: mongoose.Schema.Types.ObjectId, ref: "Phone", required: true },
-            quantity: { type: Number, required: true }
+            phone: { type: mongoose.Schema.Types.ObjectId, ref: "Phone", required: true },
+            quantity: { type: Number, required: true },
+            totalPricePhone: { type: Number },
         }],
         totalQuantity: {
             type: Number
@@ -26,6 +27,6 @@ const schema = new mongoose.Schema(
 );
 
 schema.statics.saveAndPopulate = function(doc) {
-    return doc.save().then(doc => doc.populate('phones').execPopulate())
+    return doc.save().then(doc => doc.populate('phones.phone').execPopulate())
 }
 module.exports = mongoose.model("Cart", schema);

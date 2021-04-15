@@ -30,12 +30,16 @@ export default function App() {
             />
         );
     }
-    const [ data, setData ] = useState();
-
 
     const [count, setCount] = useState(0);
     useEffect(() => {
-        fetch('http://localhost:8080/api/cart/user/' + JSON.parse(localStorage.getItem("user"))._id).then((response) => response.json()).then((data) => {setCount(data.totalQuantity)})
+        fetch('http://localhost:8080/api/cart/user/' + JSON.parse(localStorage.getItem("user"))._id)
+            .then((response) => response.json())
+            .then((data) => {
+                setCount(data.totalQuantity)
+                const cartDetails = JSON.stringify(data);
+                localStorage.setItem('cart', cartDetails);
+            })
 
     },[])
     // higher order component
