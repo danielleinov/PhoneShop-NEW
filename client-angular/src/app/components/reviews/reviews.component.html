@@ -1,0 +1,83 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Reviews</h1>
+  <p class="mb-4">This table shows the reviews of all products</p>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr class="text-center">
+            <th>ID</th>
+            <th>Author</th>
+            <th>Content</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let review of reviews">
+            <td>{{review._id}}</td>
+            <td>{{review.author}}</td>
+            <td>{{review.content}}</td>
+            <td>{{review.date}}</td>
+            <td class="text-center">
+              <a href="#" class="btn btn-warning btn-circle">
+                <i class="fas fa-edit"></i>
+              </a>&nbsp;
+              <a (click)="onDelete(review._id)" class="btn btn-danger btn-circle">
+                <i class="fas fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<!--<div class="modal fade" id="adduserModal" tabindex="-1" role="dialog" aria-labelledby="adduserModal"-->
+<!--     aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title">Add user</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <form>-->
+<!--          <div class="form-group">-->
+<!--            <label for="display-name" class="col-form-label">Display Name:</label>-->
+<!--            <input type="text" class="form-control" id="display-name" #inpDisplayName/>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="description" class="col-form-label">Description:</label>-->
+<!--            <textarea class="form-control" id="description" #inpDescription></textarea>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="price" class="col-form-label">Price ($):</label>-->
+<!--            <input type="number" class="form-control" id="price" #inpPrice/>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="discount" class="col-form-label">Discount (%):</label>-->
+<!--            <input type="number" class="form-control" id="discount" #inpDiscount/>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--        <button type="button" class="btn btn-primary"-->
+<!--                (click)="onAdd(inpDisplayName.value, inpDescription.value, inpPrice.valueAsNumber, inpDiscount.valueAsNumber)">-->
+<!--          Save changes-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

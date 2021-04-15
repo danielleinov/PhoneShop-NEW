@@ -1,0 +1,26 @@
+{
+  "name": "PhoneShop-NEW",
+  "version": "1.0.0",
+  "description": "## TL;DR",
+  "main": "index.js",
+  "scripts": {
+    "server" : "cd server && npm start",
+    "front" : "cd client-react && npm start",
+    "admin" : "cd client-angular && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run front\" \"npm run admin\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielleinov/PhoneShop-NEW.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielleinov/PhoneShop-NEW/issues"
+  },
+  "homepage": "https://github.com/danielleinov/PhoneShop-NEW#readme",
+  "dependencies": {
+    "concurrently": "^6.0.2"
+  }
+}

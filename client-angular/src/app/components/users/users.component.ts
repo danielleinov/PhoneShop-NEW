@@ -24,8 +24,10 @@ export class UsersComponent {
     });
   }
 
-  onAdd(displayName: string, description: string, price: number, discount: number) {
-    this.usersService.addUser(displayName, description, price, discount);
+  onAdd(name: string, email: string, password: string) {
+    this.usersService.addUser(name, email, password).subscribe(() => {
+      this.load();
+    });
   }
 
   onDelete(userId: string) {

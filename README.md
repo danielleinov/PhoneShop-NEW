@@ -2,6 +2,17 @@
 
 ## TL;DR
 
+### Option 1 (Start server + clients)
+
+This 1 command (ran from the main folder) will start the server and both clients (React + Angular) and open the browser
+to both clients as well.
+
+```bash
+npm run dev
+```
+
+### Option 2 (Start each component)
+
 Start the server
 
 ```bash

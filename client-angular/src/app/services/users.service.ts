@@ -17,12 +17,11 @@ export class UsersService {
     return this.http.get<User[]>(this.usersUrl);
   }
 
-  addUser(displayName: string, description: string, price: number, discount: number): Observable<User> {
-    return this.http.post<User>(this.usersUrl, {
-      displayName: displayName,
-      description: description,
-      price: price,
-      discount: discount
+  addUser(name: string, email: string, password: string): Observable<User> {
+    return this.http.post<User>(this.usersUrl + '/register', {
+      name: name,
+      email: email,
+      password: password
     });
   }
 

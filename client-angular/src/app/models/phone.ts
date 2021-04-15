@@ -4,4 +4,5 @@ export interface Phone {
   description: string,
   price: number,
   discount: number
+  reviews: string[]
 }
