@@ -4,7 +4,8 @@ const schemaPhone = Joi.object({
     displayName: Joi.string().min(2).max(50).required(),
     price: Joi.number().required(),
     discount: Joi.number().required(),
-    manufacturer: Joi.string().min(3).required()
+    manufacturer: Joi.string().min(2).required(),
+    imageUrl: Joi.string().min(6),
 });
 
 const schemaReview = Joi.object({

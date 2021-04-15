@@ -65,7 +65,16 @@ export default function Details() {
                 <div className={loading ? "loader" : ""}></div>
             </div>
             <div class="card mr-4">
-                <img class="card-img" src="http://placehold.it/900x400" alt="Card image" /></div>
+                { phoneDetails.imageUrl !== "" && phoneDetails.imageUrl !== undefined ?
+                    <img className="card-img-top"
+                         src={phoneDetails.imageUrl}
+                         alt="" width="400" height="500"/>
+                    :
+                    <img className="card-img-top"
+                         src="http://placehold.it/400x500"
+                         alt=""/>
+                }
+            </div>
             <div className="card mt-4 mr-4" >
                 <div className="card-body">
                     <h3 className="card-title">{phoneDetails.displayName}</h3>

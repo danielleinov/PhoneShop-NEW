@@ -19,7 +19,12 @@ schema = new mongoose.Schema({
     manufacturer: {
         type: String,
         required: true,
-        minlength: 3
+        minlength: 2
+    },
+    imageUrl: {
+        type: String,
+        required: false,
+        minlength: 6
     },
     reviews: [
         {
