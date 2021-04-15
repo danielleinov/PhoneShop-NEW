@@ -4,10 +4,11 @@
 
 ### Option 1 (Start server + clients)
 
-This 1 command (ran from the main folder) will start the server and both clients (React + Angular) and open the browser
+The following commands (ran from the **main folder**) will start the server and both clients (React + Angular) and open the browser
 to both clients as well.
 
 ```bash
+npm install
 npm run dev
 ```
 
