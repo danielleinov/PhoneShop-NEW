@@ -71,7 +71,7 @@ export default function Details() {
                     <h3 className="card-title">{phoneDetails.displayName}</h3>
                     <h4>{phoneDetails.price}$</h4>
                     <h5>{phoneDetails.discount}% Discount</h5>
-                    <p className="card-text">{phoneDetails.description}</p>
+                    <p className="card-text">{phoneDetails.manufacturer}</p>
                     <span className="text-warning">★ ★ ★ ★ ☆</span>
                     4 stars
                 </div>

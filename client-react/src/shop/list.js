@@ -28,7 +28,7 @@ export default function List({q = ''}) {
                     {
                         items.map((data, key) => {
                             return <Item name={data.displayName} price={data.price} key={key} id={data._id}
-                                         description={data.description}/>;
+                                         manufacturer={data.manufacturer}/>;
                         })
                     }
                 </div>

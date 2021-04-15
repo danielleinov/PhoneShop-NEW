@@ -24,8 +24,8 @@ export class ReviewsComponent {
     });
   }
 
-  onAdd(displayName: string, description: string, price: number, discount: number) {
-    this.reviewsService.addReview(displayName, description, price, discount);
+  onAdd(displayName: string, manufacturer: string, price: number, discount: number) {
+    this.reviewsService.addReview(displayName, manufacturer, price, discount);
   }
 
   onDelete(reviewId: string) {

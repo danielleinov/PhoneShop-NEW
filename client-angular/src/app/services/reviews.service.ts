@@ -17,10 +17,10 @@ export class ReviewsService {
     return this.http.get<Review[]>(this.reviewsUrl);
   }
 
-  addReview(displayName: string, description: string, price: number, discount: number): Observable<Review> {
+  addReview(displayName: string, manufacturer: string, price: number, discount: number): Observable<Review> {
     return this.http.post<Review>(this.reviewsUrl, {
       displayName: displayName,
-      description: description,
+      manufacturer: manufacturer,
       price: price,
       discount: discount
     });

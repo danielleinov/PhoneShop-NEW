@@ -17,10 +17,10 @@ export class PhonesService {
     return this.http.get<Phone[]>(this.phonesUrl);
   }
 
-  addPhone(displayName: string, description: string, price: number, discount: number): Observable<Phone> {
+  addPhone(displayName: string, manufacturer: string, price: number, discount: number): Observable<Phone> {
     return this.http.post<Phone>(this.phonesUrl, {
       displayName: displayName,
-      description: description,
+      manufacturer: manufacturer,
       price: price,
       discount: discount
     });

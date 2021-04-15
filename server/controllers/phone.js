@@ -63,7 +63,7 @@ module.exports.scrape = async (req, res) => {
 
         const phone = new Phone({
             "displayName": name,
-            "description": manufacturer,
+            "manufacturer": manufacturer,
             "price": price,
             "discount": discount
         });

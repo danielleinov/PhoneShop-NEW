@@ -59,7 +59,7 @@ export class BarChartComponent implements OnInit {
 
     // Add Y axis
     const y = d3.scaleLinear()
-      .domain([0, 50])
+      .domain([0, 70])
       .range([this.height, 0]);
 
     this.svg.append("g")

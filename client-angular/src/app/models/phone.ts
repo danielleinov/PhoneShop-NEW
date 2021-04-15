@@ -1,7 +1,7 @@
 export interface Phone {
   _id: string,
   displayName: string,
-  description: string,
+  manufacturer: string,
   price: number,
   discount: number
   reviews: string[]

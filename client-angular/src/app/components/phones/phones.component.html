@@ -29,7 +29,7 @@
           <tr class="text-center">
             <th>ID</th>
             <th>Display Name</th>
-            <th>Description</th>
+            <th>Manufacturer</th>
             <th>Price</th>
             <th>Discount</th>
             <th># Reviews</th>
@@ -40,7 +40,7 @@
           <tr *ngFor="let phone of phones">
             <td>{{phone._id}}</td>
             <td>{{phone.displayName}}</td>
-            <td>{{phone.description}}</td>
+            <td>{{phone.manufacturer}}</td>
             <td>$ {{phone.price}}</td>
             <td>{{phone.discount}}%</td>
             <td>{{phone.reviews.length}}</td>
@@ -78,8 +78,8 @@
             <input type="text" class="form-control" id="display-name" #inpDisplayName/>
           </div>
           <div class="form-group">
-            <label for="description" class="col-form-label">Description:</label>
-            <textarea class="form-control" id="description" #inpDescription></textarea>
+            <label for="manufacturer" class="col-form-label">Manufacturer:</label>
+            <input class="form-control" id="manufacturer" #inpManufacturer/>
           </div>
           <div class="form-row">
             <div class="col-md-6">
@@ -106,7 +106,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary"
-                (click)="onAdd(inpDisplayName.value, inpDescription.value, inpPrice.valueAsNumber, inpDiscount.valueAsNumber)"
+                (click)="onAdd(inpDisplayName.value, inpManufacturer.value, inpPrice.valueAsNumber, inpDiscount.valueAsNumber)"
                 data-dismiss="modal">
           Save changes
         </button>

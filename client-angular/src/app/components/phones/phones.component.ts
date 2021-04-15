@@ -33,8 +33,8 @@ export class PhonesComponent {
     this.currentPhoneService.changeCurrentPhone(phone);
   }
 
-  onAdd(displayName: string, description: string, price: number, discount: number) {
-    this.phonesService.addPhone(displayName, description, price, discount).subscribe(() => {
+  onAdd(displayName: string, manufacturer: string, price: number, discount: number) {
+    this.phonesService.addPhone(displayName, manufacturer, price, discount).subscribe(() => {
       this.load();
     });
   }
