@@ -37,3 +37,11 @@ module.exports.getUserById = async (req, res) => {
     }
     res.send(user)
 }
+
+module.exports.updateUserById = async (req, res) => {
+    const {id} = req.params;
+    User.findOneAndUpdate({_id: id}, req.body, {upsert: true}, function (err, doc) {
+        if (err) return res.send(500, {error: err});
+        return res.send(doc);
+    });
+}
