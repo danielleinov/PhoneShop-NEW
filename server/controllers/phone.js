@@ -27,6 +27,30 @@ module.exports.getPhones = async (req, res) => {
     res.send(phones)
 }
 
+module.exports.searchPhones = async (req, res) => {
+    console.log(req.query)
+    console.log(req.query.maxPrice === '')
+    const name = req.query.name
+    const maxPrice = parseInt(req.query.maxPrice === '' ? Number.MAX_SAFE_INTEGER : req.query.maxPrice)
+    console.log(req.query.maxPrice === '')
+    const manufacturer = req.query.manufacturer
+    const phone = await Phone.find({
+        'displayName': {
+            $regex: `.*${name}.*`, "$options": "i"
+        },
+        'price': {
+            $lt: maxPrice
+        },
+        'manufacturer': {
+            $regex: `.*${manufacturer}.*`, "$options": "i"
+        },
+    });
+    if (!phone) {
+        return res.status(404).send('That phone Not found');
+    }
+    res.send(phone)
+}
+
 module.exports.getPhoneById = async (req, res) => {
     const {id} = req.params;
     const phone = await Phone.findById(id).populate("reviews");
