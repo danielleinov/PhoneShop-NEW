@@ -36,6 +36,7 @@ export default function App() {
 
     const [count, setCount] = useState(0);
     useEffect(() => {
+        JSON.parse(localStorage.getItem("user")) ?
         fetch('http://localhost:8080/api/cart/user/' + JSON.parse(localStorage.getItem("user"))._id)
             .then((response) => response.json())
             .then((data) => {
@@ -43,6 +44,8 @@ export default function App() {
                 const cartDetails = JSON.stringify(data);
                 localStorage.setItem('cart', cartDetails);
             })
+            :
+            setCount(0)
 
     },[])
     // higher order component

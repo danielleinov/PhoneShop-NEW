@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {Redirect} from "react-router-dom";
 import axios from "axios";
 
-export default function Login() {
+export default function Login({count, onCountChange}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [user, setUser] = useState();
