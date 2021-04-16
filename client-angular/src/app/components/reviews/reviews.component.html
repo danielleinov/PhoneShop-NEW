@@ -1,0 +1,41 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Reviews</h1>
+  <p class="mb-4">This table shows the reviews of all products</p>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr class="text-center">
+            <th>ID</th>
+            <th>Author</th>
+            <th>Content</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let review of reviews">
+            <td>{{review._id}}</td>
+            <td>{{review.author}}</td>
+            <td>{{review.content}}</td>
+            <td>{{review.date}}</td>
+            <td class="text-center">
+              <a href="#" class="btn btn-warning btn-circle">
+                <i class="fas fa-edit"></i>
+              </a>&nbsp;
+              <a (click)="onDelete(review._id)" class="btn btn-danger btn-circle">
+                <i class="fas fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

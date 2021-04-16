@@ -28,7 +28,7 @@ export default function List({q = '', count, onCountChange}) {
                     {
                         items.map((data, key) => {
                             return <Item name={data.displayName} price={data.price} key={key} id={data._id}
-                                         description={data.description} count={count} onCountChange={onCountChange}/>;
+                                         manufacturer={data.manufacturer} imageUrl={data.imageUrl} count={count} onCountChange={onCountChange}/>;
                         })
                     }
                 </div>

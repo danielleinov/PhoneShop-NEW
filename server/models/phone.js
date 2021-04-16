@@ -10,20 +10,21 @@ schema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        required: true,
-        //minlength: 2,
-        //maxlength: 50
+        required: true
     },
     discount: {
         type: Number,
-        required: true,
-        // minlength: 5,
-        // maxlength: 255,
+        required: true
     },
-    description: {
+    manufacturer: {
         type: String,
         required: true,
-        minlength: 5
+        minlength: 2
+    },
+    imageUrl: {
+        type: String,
+        required: false,
+        minlength: 6
     },
     reviews: [
         {

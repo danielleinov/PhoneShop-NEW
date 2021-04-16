@@ -6,7 +6,6 @@ export default function Header({count, onCountChange}) {
 
     const history = useHistory();
 
-
     const onLogout = (e) => {
         localStorage.removeItem('user');
     }
