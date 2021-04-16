@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./cart.css"
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import axios from "axios";
 
 export default function Cart({count, onCountChange}) {
@@ -31,6 +31,26 @@ export default function Cart({count, onCountChange}) {
 
          );
         setData(response.data)
+    }
+    const createOrder = (totalPrice, cart) => {
+        console.log(totalPrice)
+        console.log(cart)
+        axios.post(
+            `http://localhost:8080/api/order`,
+            {
+                totalPrice: totalPrice,
+                cart: cart
+            }
+
+        ).then(() => {
+            console.log("change")
+            onCountChange(0)
+            localStorage.removeItem("cart");
+            localStorage.setItem("cartTotal", 0);
+
+        });
+
+
     }
     return (
         <div className="container mb-4">
@@ -82,7 +102,7 @@ export default function Cart({count, onCountChange}) {
                             <Link to={'/'}><button className="btn btn-block btn-light">Continue Shopping</button></Link>
                         </div>
                         <div className="col-sm-12 col-md-6 text-right">
-                            <button className="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                            <Link to={'/checkout'}><button onClick={()=>{createOrder(totalPrice,data)}} className="btn btn-lg btn-block btn-success text-uppercase">Checkout</button></Link>
                         </div>
                     </div>
                 </div>
