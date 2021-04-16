@@ -4,9 +4,9 @@
   "description": "## TL;DR",
   "main": "index.js",
   "scripts": {
-    "server" : "cd server && npm start",
-    "front" : "cd client-react && npm start",
-    "admin" : "cd client-angular && npm start",
+    "server": "cd server && npm start",
+    "front": "cd client-react && npm start",
+    "admin": "cd client-angular && npm start",
     "dev": "concurrently \"npm run server\" \"npm run front\" \"npm run admin\""
   },
   "repository": {

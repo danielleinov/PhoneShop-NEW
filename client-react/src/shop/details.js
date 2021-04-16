@@ -75,7 +75,7 @@ export default function Details() {
                          alt=""/>
                 }
             </div>
-            <div className="card mt-4 mr-4" >
+            <div className="card mr-4" >
                 <div className="card-body">
                     <h3 className="card-title">{phoneDetails.displayName}</h3>
                     <h4>{phoneDetails.price}$</h4>

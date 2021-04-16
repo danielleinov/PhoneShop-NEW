@@ -1,7 +1,8 @@
 import Item from "./item";
 import React from "react";
+import {BrowserRouter, Redirect} from "react-router-dom";
 
-export default function List({q = ''}) {
+export default function List({q = '', count, onCountChange}) {
 
     const [items, setItems] = React.useState([]);
 
@@ -27,7 +28,7 @@ export default function List({q = ''}) {
                     {
                         items.map((data, key) => {
                             return <Item name={data.displayName} price={data.price} key={key} id={data._id}
-                                         manufacturer={data.manufacturer} imageUrl={data.imageUrl}/>;
+                                         manufacturer={data.manufacturer} imageUrl={data.imageUrl} count={count} onCountChange={onCountChange}/>;
                         })
                     }
                 </div>
