@@ -15,7 +15,6 @@ export class UpdatePhoneComponent implements OnInit {
 
   constructor(private router: Router, private phonesService: PhonesService) {
     this.id =  router.url.split("/")[2]
-    // this.name = phonesService.getPhone()
   }
 
   ngOnInit(): void {
@@ -24,9 +23,21 @@ export class UpdatePhoneComponent implements OnInit {
     });
   }
 
+  onUpdate(phoneId: string, displayName: string, manufacturer: string, imageUrl: string, price: number, discount: number) {
+    this.phonesService.updatePhone(phoneId, {
+      displayName: displayName,
+      manufacturer: manufacturer,
+      imageUrl: imageUrl,
+      price: price,
+      discount: discount
+    }).subscribe(() => {
+      this.router.navigate(['/phones']);
+    });
+  }
+
   onDelete(phoneId: string) {
     this.phonesService.deletePhone(phoneId).subscribe(() => {
-      console.log("Phone deleted!");
+      this.router.navigate(['/phones']);
     });
   }
 }

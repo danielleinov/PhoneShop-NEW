@@ -9,11 +9,12 @@
     <div class="card-header py-3">
       <div class="row">
         <div class="col-md-3">
-          <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#addPhoneModal">
+          <button type="button" class="btn btn-success btn-icon-split"
+                  (click)="onUpdate(phone._id, inpDisplayName.value, inpManufacturer.value, inpImageUrl.value, inpPrice.valueAsNumber, inpDiscount.valueAsNumber)">
             <span class="text">Update</span>
           </button>
         </div>
-        <button type="button" class="btn btn-danger ml-auto" (click)="onDelete(phone._id)" routerLink="/phones" >Delete</button>
+        <button type="button" class="btn btn-danger ml-auto" (click)="onDelete(phone._id)">Delete</button>
       </div>
     </div>
     <div class="card-body">
@@ -28,7 +29,8 @@
         </div>
         <div class="form-group">
           <label for="manufacturer" class="col-form-label font-weight-bold">Manufacturer:</label>
-          <input type="text" class="form-control" id="manufacturer" [defaultValue]="phone.manufacturer" #inpManufacturer/>
+          <input type="text" class="form-control" id="manufacturer" [defaultValue]="phone.manufacturer"
+                 #inpManufacturer/>
         </div>
         <div class="form-group">
           <label for="imageUrl" class="col-form-label font-weight-bold">Image URL:</label>

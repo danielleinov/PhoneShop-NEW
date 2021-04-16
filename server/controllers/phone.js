@@ -11,10 +11,9 @@ module.exports.addPhone = async (req, res) => {
 module.exports.deletePhoneById = async (req, res) => {
     const {id} = req.params;
     Phone.findByIdAndDelete(id, (err, docs) => {
-        if (err){
+        if (err) {
             res.send(err)
-        }
-        else{
+        } else {
             res.json({
                 "status": "ok",
                 "Deleted": docs
@@ -37,6 +36,14 @@ module.exports.getPhoneById = async (req, res) => {
         });
     }
     res.send(phone)
+}
+
+module.exports.updatePhoneById = async (req, res) => {
+    const {id} = req.params;
+    Phone.findOneAndUpdate({_id: id}, req.body, {upsert: true}, function (err, doc) {
+        if (err) return res.send(500, {error: err});
+        return res.send(doc);
+    });
 }
 
 module.exports.getPhoneByName = async (req, res) => {
@@ -71,7 +78,7 @@ module.exports.scrape = async (req, res) => {
             "imageUrl": imageUrl !== undefined ? imageUrl : ""
         });
 
-        phone.save(function(err, doc) {
+        phone.save(function (err, doc) {
             if (err) return console.error(err);
             console.log("Document inserted successfully!");
         });

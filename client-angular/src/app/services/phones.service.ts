@@ -32,14 +32,14 @@ export class PhonesService {
     return this.http.get<Phone>(url);
   }
 
-  updatePhone(phone: Phone): Observable<Phone> {
-    const url = `${this.phonesUrl}/${phone._id}`;
+  updatePhone(phoneId: string, props): Observable<Phone> {
+    const url = `${this.phonesUrl}/${phoneId}`;
     return this.http.patch<Phone>(url, {
-      displayName: phone.displayName,
-      manufacturer: phone.manufacturer,
-      imageUrl: phone.imageUrl,
-      price: phone.price,
-      discount: phone.discount
+      displayName: props.displayName,
+      manufacturer: props.manufacturer,
+      imageUrl: props.imageUrl,
+      price: props.price,
+      discount: props.discount
     });
   }
 
