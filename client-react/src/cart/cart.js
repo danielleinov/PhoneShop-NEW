@@ -1,13 +1,57 @@
-import React from "react";
+import React, {useState} from "react";
 import "./cart.css"
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
+import axios from "axios";
 
-export default function Cart() {
+export default function Cart({count, onCountChange}) {
     const cart = JSON.parse(localStorage.getItem("cart"))
+    const cartId = cart._id;
+    const [data, setData] = useState(cart);
+    React.useEffect(() => {
+        const cartDetails = JSON.stringify(data);
+        localStorage.setItem("cart", cartDetails);
+        localStorage.setItem("cartTotal", JSON.parse(cartDetails).totalQuantity)
+        onCountChange(JSON.parse(cartDetails).totalQuantity);
+
+    }, [data]);
+
     let totalPrice = 0;
-    cart.phones.map((data, key) => {
+    data.phones.map((data, key) => {
         totalPrice += data.totalPricePhone;
     });
+    const deletePhone = async (cartId, phoneId) => {
+        const response = await axios.delete(
+             `http://localhost:8080/api/cart/${cartId}`,
+            {
+                data: {
+                    phoneId: phoneId,
+                    quantity: 1
+                }
+            }
+
+         );
+        setData(response.data)
+    }
+    const createOrder = (totalPrice, cart) => {
+        console.log(totalPrice)
+        console.log(cart)
+        axios.post(
+            `http://localhost:8080/api/order`,
+            {
+                totalPrice: totalPrice,
+                cart: cart
+            }
+
+        ).then(() => {
+            console.log("change")
+            onCountChange(0)
+            localStorage.removeItem("cart");
+            localStorage.setItem("cartTotal", 0);
+
+        });
+
+
+    }
     return (
         <div className="container mb-4">
             <div className="row">
@@ -25,16 +69,16 @@ export default function Cart() {
                             </thead>
                             <tbody>
                             {
-                                cart.phones.map((data, key) => {
+                                data.phones.map((data, key) => {
                                     console.log(data)
                                     return([
                                         <tr>
 
-                                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                                            <td><img src={data.phone.imageUrl} /> </td>
                                             <td key={key}>{data.phone.displayName}</td>
                                             <td className="text-right">{data.quantity}</td>
                                             <td className="text-right">{data.totalPricePhone} €</td>
-                                            <td className="text-right"><button className="btn btn-sm btn-danger"><i className="fa fa-trash" /> </button> </td>
+                                            <td className="text-right"><button onClick={()=>{deletePhone(cartId,data.phone._id)}} className="btn btn-sm btn-danger"><i className="fa fa-trash" /> </button> </td>
                                         </tr>
                                     ])
 
@@ -58,7 +102,7 @@ export default function Cart() {
                             <Link to={'/'}><button className="btn btn-block btn-light">Continue Shopping</button></Link>
                         </div>
                         <div className="col-sm-12 col-md-6 text-right">
-                            <button className="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                            <Link to={'/checkout'}><button onClick={()=>{createOrder(totalPrice,data)}} className="btn btn-lg btn-block btn-success text-uppercase">Checkout</button></Link>
                         </div>
                     </div>
                 </div>

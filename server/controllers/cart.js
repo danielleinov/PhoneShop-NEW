@@ -48,3 +48,22 @@ module.exports.getCartByUserId = async (req, res) => {
     }
     return res.json(cart);
 }
+
+module.exports.deletePhoneFromCart = async (req, res) => {
+    const {cartId} = req.params;
+    const {phoneId, quantity} = req.body;
+    let oldCart = await Cart.findById(cartId);
+    let phone = await Phone.findById(phoneId);
+    let itemIndex = oldCart.phones.findIndex(p => p.phone._id == phoneId);
+    let productItem = oldCart.phones[itemIndex];
+    productItem.quantity -= quantity;
+    productItem.totalPricePhone = phone.price * productItem.quantity;
+    oldCart.phones[itemIndex] = productItem;
+    if (productItem.quantity == 0) {
+        oldCart.phones.splice(itemIndex, itemIndex + 1);
+    }
+    oldCart.totalQuantity -= 1;
+    console.log(oldCart)
+    const cart = await Cart.saveAndPopulate(oldCart);
+    return res.json(cart);
+}

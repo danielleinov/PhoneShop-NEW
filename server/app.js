@@ -14,6 +14,7 @@ const phone = require("./routes/phone");
 const review = require("./routes/review")
 const user = require("./routes/user");
 const cart = require("./routes/cart");
+const order = require("./routes/order");
 
 require('custom-env').env(process.env.NODE_ENV, './config');
 
@@ -48,6 +49,7 @@ app.use("/api/phone", phone);
 app.use("/api/review", review);
 app.use("/api/user", user);
 app.use("/api/cart", cart);
+app.use("/api/order", order);
 app.use((err, req, res, next) => {
     const {statusCode = 500} = err;
     console.log(err.message);
