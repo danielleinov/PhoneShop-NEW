@@ -33,8 +33,4 @@ export class ReviewsComponent {
       this.load();
     });
   }
-
-  handlePanel(action: string) {
-    this.load();
-  }
 }
