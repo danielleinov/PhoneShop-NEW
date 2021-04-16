@@ -45,12 +45,14 @@
             <td>{{phone.discount}}%</td>
             <td>{{phone.reviews.length}}</td>
             <td class="text-center">
-              <a class="btn btn-warning btn-circle" routerLink="/phones/{{phone._id}}">
-                <i class="fas fa-edit"></i>
-              </a>&nbsp;
-              <a (click)="onDelete(phone._id)" class="btn btn-danger btn-circle">
-                <i class="fas fa-trash"></i>
-              </a>
+              <div class="btn-group ml-auto" role="group" >
+                <button class="btn btn-warning btn-circle" routerLink="/phones/{{phone._id}}">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button (click)="onDelete(phone._id)" class="btn btn-danger btn-circle">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
             </td>
           </tr>
           </tbody>
