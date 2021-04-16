@@ -13,6 +13,7 @@ const http = require('http');
 const phone = require("./routes/phone");
 const review = require("./routes/review")
 const user = require("./routes/user");
+const cart = require("./routes/cart");
 
 require('custom-env').env(process.env.NODE_ENV, './config');
 
@@ -46,6 +47,7 @@ passport.deserializeUser(UserModel.deserializeUser());
 app.use("/api/phone", phone);
 app.use("/api/review", review);
 app.use("/api/user", user);
+app.use("/api/cart", cart);
 app.use((err, req, res, next) => {
     const {statusCode = 500} = err;
     console.log(err.message);
