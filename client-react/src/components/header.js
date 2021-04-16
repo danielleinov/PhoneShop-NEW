@@ -10,13 +10,6 @@ export default function Header({count, onCountChange}) {
         localStorage.removeItem('user');
     }
 
-    const doSearch = (e) => {
-        if (e.target.value === "")
-            history.push('/');
-        else
-            history.push('/search?q=' + e.target.value);
-    }
-
     // if (window.location.pathname === '/login') {
     //     return null;
     // }
@@ -27,7 +20,6 @@ export default function Header({count, onCountChange}) {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div className="container">
                 <Link className="navbar-brand" to="/">Phoney</Link>
-                <input placeholder="Search By Phone Name" className="form-control" onChange={doSearch}/>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"/>

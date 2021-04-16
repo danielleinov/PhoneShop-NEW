@@ -51,6 +51,31 @@ module.exports.getPhoneByName = async (req, res) => {
     res.send(phone)
 }
 
+module.exports.searchPhones = async (req, res) => {
+
+    console.log(req.query)
+    console.log(req.query.maxPrice === '')
+    const name = req.query.name
+    const maxPrice = parseInt(req.query.maxPrice === '' ? Number.MAX_SAFE_INTEGER : req.query.maxPrice )
+    console.log(req.query.maxPrice === '')
+    const manufacturer = req.query.manufacturer
+    const phone = await Phone.find({
+        'displayName': {
+            $regex: `.*${name}.*`, "$options" : "i"
+        },
+        'price': {
+            $lt: maxPrice
+        },
+        'manufacturer': {
+            $regex: `.*${manufacturer}.*` , "$options" : "i"
+        },
+    });
+    if (!phone) {
+        return res.status(404).send('That phone Not found');
+    }
+    res.send(phone)
+}
+
 module.exports.scrape = async (req, res) => {
     const page = await axios.get('https://www.mobile57.com/mobile-price-usd-709-to-usd-9999999.php')
     const $ = cheerio.load(page.data);
