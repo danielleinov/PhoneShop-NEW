@@ -9,6 +9,7 @@ import Details from './shop/details';
 import Search from './components/search';
 import Login from './login/login';
 import Cart from './cart/cart';
+import Checkout from './checkout/checkout'
 
 const socket = io.connect("http://localhost:8080");
 
@@ -36,6 +37,7 @@ export default function App() {
 
     const [count, setCount] = useState(0);
     useEffect(() => {
+        JSON.parse(localStorage.getItem("user")) ?
         fetch('http://localhost:8080/api/cart/user/' + JSON.parse(localStorage.getItem("user"))._id)
             .then((response) => response.json())
             .then((data) => {
@@ -43,6 +45,8 @@ export default function App() {
                 const cartDetails = JSON.stringify(data);
                 localStorage.setItem('cart', cartDetails);
             })
+            :
+            setCount(0)
 
     },[])
     // higher order component
@@ -66,6 +70,7 @@ export default function App() {
                     <Route path="/phone"  component={() => withHeaderAndFooter(Details)}/>
                     <Route path="/search" component={() => withHeaderAndFooter(Search)}/>
                     <Route path="/cart" component={() => withHeaderAndFooter(Cart)}/>
+                    <Route path="/checkout" component={() => withHeaderAndFooter(Checkout)}/>
                 </PrivateRoute>
             </Switch>
         </BrowserRouter>
