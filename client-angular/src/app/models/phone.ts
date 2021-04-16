@@ -3,6 +3,7 @@ export interface Phone {
   displayName: string,
   manufacturer: string,
   price: number,
-  discount: number
+  discount: number,
+  imageUrl: string
   reviews: string[]
 }

@@ -1,0 +1,60 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Update Phone</h1>
+  <p class="mb-4">Here you can update the phone details</p>
+
+  <!-- DataTales Example -->
+  <div *ngIf="phone" class="card shadow mb-4">
+    <div class="card-header py-3">
+      <div class="row">
+        <div class="col-md-3">
+          <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#addPhoneModal">
+            <span class="text">Update</span>
+          </button>
+        </div>
+        <button type="button" class="btn btn-danger ml-auto" (click)="onDelete(phone._id)" routerLink="/phones" >Delete</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <label for="phone-id" class="col-form-label font-weight-bold">ID:</label>
+          <input type="text" disabled class="form-control" id="phone-id" [defaultValue]="phone._id"/>
+        </div>
+        <div class="form-group">
+          <label for="display-name" class="col-form-label font-weight-bold">Display Name:</label>
+          <input type="text" class="form-control" id="display-name" [defaultValue]="phone.displayName" #inpDisplayName/>
+        </div>
+        <div class="form-group">
+          <label for="manufacturer" class="col-form-label font-weight-bold">Manufacturer:</label>
+          <input type="text" class="form-control" id="manufacturer" [defaultValue]="phone.manufacturer" #inpManufacturer/>
+        </div>
+        <div class="form-group">
+          <label for="imageUrl" class="col-form-label font-weight-bold">Image URL:</label>
+          <input type="url" class="form-control" id="imageUrl" [defaultValue]="phone.imageUrl" #inpImageUrl/>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6">
+            <label for="price" class="col-form-label font-weight-bold">Price:</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+              </div>
+              <input type="number" class="form-control" id="price" [defaultValue]="phone.price" #inpPrice/>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="discount" class="col-form-label font-weight-bold">Discount:</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">%</div>
+              </div>
+              <input type="number" class="form-control" id="discount" [defaultValue]="phone.discount" #inpDiscount/>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
