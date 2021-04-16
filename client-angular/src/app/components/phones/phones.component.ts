@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {Phone} from 'src/app/models/phone';
 import {PhonesService} from 'src/app/services/phones.service';
-import {CurrentPhoneService} from 'src/app/services/current-phone.service';
 
 @Component({
   selector: 'app-list',
@@ -15,8 +14,7 @@ export class PhonesComponent {
 
   phones: Phone[] = [];
 
-  constructor(private phonesService: PhonesService,
-              private currentPhoneService: CurrentPhoneService) {
+  constructor(private phonesService: PhonesService) {
   }
 
   ngOnInit() {
@@ -29,12 +27,8 @@ export class PhonesComponent {
     });
   }
 
-  onClick(phone: Phone) {
-    this.currentPhoneService.changeCurrentPhone(phone);
-  }
-
-  onAdd(displayName: string, manufacturer: string, price: number, discount: number) {
-    this.phonesService.addPhone(displayName, manufacturer, price, discount).subscribe(() => {
+  onAdd(displayName: string, manufacturer: string, imageUrl: string, price: number, discount: number) {
+    this.phonesService.addPhone(displayName, manufacturer, imageUrl, price, discount).subscribe(() => {
       this.load();
     });
   }

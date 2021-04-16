@@ -17,10 +17,11 @@ export class PhonesService {
     return this.http.get<Phone[]>(this.phonesUrl);
   }
 
-  addPhone(displayName: string, manufacturer: string, price: number, discount: number): Observable<Phone> {
+  addPhone(displayName: string, manufacturer: string, imageUrl: string, price: number, discount: number): Observable<Phone> {
     return this.http.post<Phone>(this.phonesUrl, {
       displayName: displayName,
       manufacturer: manufacturer,
+      imageUrl: imageUrl,
       price: price,
       discount: discount
     });
@@ -31,9 +32,15 @@ export class PhonesService {
     return this.http.get<Phone>(url);
   }
 
-  updatePhone(phone: Phone): Observable<Phone> {
-    const url = `${this.phonesUrl}/${phone._id}`;
-    return this.http.patch<Phone>(url, {displayName: phone.displayName});
+  updatePhone(phoneId: string, props): Observable<Phone> {
+    const url = `${this.phonesUrl}/${phoneId}`;
+    return this.http.patch<Phone>(url, {
+      displayName: props.displayName,
+      manufacturer: props.manufacturer,
+      imageUrl: props.imageUrl,
+      price: props.price,
+      discount: props.discount
+    });
   }
 
   deletePhone(id: string): Observable<Phone> {
