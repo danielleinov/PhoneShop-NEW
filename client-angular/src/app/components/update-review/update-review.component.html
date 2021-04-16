@@ -1,0 +1,41 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Update Review</h1>
+  <p class="mb-4">Here you can update the review details</p>
+
+  <!-- DataTales Example -->
+  <div *ngIf="review" class="card shadow mb-4">
+    <div class="card-header py-3">
+      <div class="row">
+        <div class="col-md-3">
+          <button type="button" class="btn btn-success btn-icon-split"
+                  (click)="onUpdate(review._id, inpContent.value, inpAuthor.value)">
+            <span class="text">Update</span>
+          </button>
+        </div>
+        <button type="button" class="btn btn-danger ml-auto" (click)="onDelete(review._id)">Delete</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <label for="review-id" class="col-form-label font-weight-bold">ID:</label>
+          <input type="text" disabled class="form-control" id="review-id" [defaultValue]="review._id"/>
+        </div>
+        <div class="form-group">
+          <label for="content" class="col-form-label font-weight-bold">Content:</label>
+          <textarea type="text" class="form-control" id="content" [defaultValue]="review.content" #inpContent></textarea>
+        </div>
+        <div class="form-group">
+          <label for="author" class="col-form-label font-weight-bold">Author:</label>
+          <input type="text" class="form-control" id="author" [defaultValue]="review.author" #inpAuthor/>
+        </div>
+        <div class="form-group">
+          <label for="date" class="col-form-label font-weight-bold">Date:</label>
+          <input type="text" disabled class="form-control" id="date" [defaultValue]="review.date"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

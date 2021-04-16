@@ -26,7 +26,7 @@
             <td>{{review.date}}</td>
             <td class="text-center">
               <div class="btn-group ml-auto" role="group" >
-                <button href="#" class="btn btn-warning btn-circle">
+                <button class="btn btn-warning btn-circle" routerLink="/reviews/{{review._id}}">
                   <i class="fas fa-edit"></i>
                 </button>
                 <button (click)="onDelete(review._id)" class="btn btn-danger btn-circle">

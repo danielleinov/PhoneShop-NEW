@@ -31,9 +31,12 @@ export class ReviewsService {
     return this.http.get<Review>(url);
   }
 
-  updateReview(review: Review): Observable<Review> {
-    const url = `${this.reviewsUrl}/${review._id}`;
-    return this.http.patch<Review>(url, {displayName: review.author});
+  updateReview(reviewId: string, props): Observable<Review> {
+    const url = `${this.reviewsUrl}/${reviewId}`;
+    return this.http.patch<Review>(url, {
+      content: props.content,
+      author: props.author
+    });
   }
 
   deleteReview(id: string): Observable<Review> {
