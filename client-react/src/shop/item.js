@@ -1,10 +1,14 @@
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import React, {useEffect} from "react";
 import axios from "axios";
 import List from "./list";
 
 export default function Item({name, price, id, manufacturer, imageUrl, count, onCountChange}) {
     const fetchData = async () => {
+        if(JSON.parse(localStorage.getItem("user")) == undefined) {
+            return (alert("Need to login"))
+        }
+
         const userId = JSON.parse(localStorage.getItem("user"))._id;
         console.log(userId)
         const response = await axios.post(
