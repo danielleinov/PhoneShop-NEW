@@ -1,12 +1,14 @@
 import "./login.css"
 import React, {useEffect, useState} from "react";
-import {Link, Redirect} from "react-router-dom";
+import {Link, Redirect, useHistory} from "react-router-dom";
 import axios from "axios";
 
 export default function Login({count, onCountChange}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [user, setUser] = useState();
+
+    const history = useHistory();
 
     useEffect(() => {
         const loggedInUser = localStorage.getItem("user");
@@ -20,19 +22,24 @@ export default function Login({count, onCountChange}) {
         e.preventDefault();
         const user = {username, password};
         // send the username and password to the server
-        const response = await axios.post(
+        axios.post(
             "http://localhost:8080/api/user/login",
             user
-        );
-        // set the state of the user
-        setUser(response.data)
-        // store the user in localStorage
-        localStorage.setItem('user', JSON.stringify(response.data))
+        ).then((response) => {
+            // set the state of the user
+            setUser(response.data)
+
+            // store the user in localStorage
+            localStorage.setItem('user', JSON.stringify(response.data))
+            history.push("/");
+        }).catch((err => {
+            alert('Login Failed. Please try Again');
+        }));
     };
 
     // If there's a user, redirect to main page
     if (user) {
-        return <Redirect to='/'/>
+        return <Redirect to={'/'}/>
     }
 
     // if there's no user, show the login form
@@ -65,10 +72,16 @@ export default function Login({count, onCountChange}) {
                                        onChange={({target}) => setPassword(target.value)}/>
                             </div>
                             <div className="form-group">
-                                <input type="submit" defaultValue="Login" className="btn float-right login_btn"/>
+                                <button type="submit" defaultValue="Login" className="btn login_btn">
+                                    Login
+                                </button>
                             </div>
                             <div className="form-group">
-                                <Link to={'/register'}><input type="register" defaultValue="Register" className="btn float-right login_btn"/></Link>
+                                <Link to={'/register'}>
+                                    <button type="register" defaultValue="Register"
+                                            className="btn btn-primary">Register
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

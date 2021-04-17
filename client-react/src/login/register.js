@@ -55,7 +55,7 @@ export default function Register() {
                         </div>
                         <div className="row align-items-center mt-4">
                             <div className="col">
-                                <input type="email" className="form-control" value={email} placeholder="Email"
+                                <input type="email" className="form-control" value={email} placeholder="user@domain.com"
                                        onChange={({target}) => setEmail(target.value)}/>
                             </div>
                         </div>
