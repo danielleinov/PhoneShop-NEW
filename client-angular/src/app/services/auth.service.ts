@@ -23,6 +23,13 @@ export class AuthService {
     localStorage.setItem('userInfo', JSON.stringify(user));
   }
 
+  public getUserName() : String {
+    if (this.isAuthenticated()) {
+      return JSON.parse(localStorage.getItem('userInfo'))['user']['name'];
+    }
+    return ""
+  }
+
   public removeUserInfo() {
     localStorage.removeItem('userInfo');
   }

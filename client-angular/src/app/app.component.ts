@@ -17,6 +17,10 @@ export class AppComponent {
     return this.authService.isAuthenticated();
   }
 
+  getUserName() {
+    return this.authService.getUserName();
+  }
+
   onLogout() {
     this.authService.removeUserInfo();
     this.router.navigate(['/login']);
