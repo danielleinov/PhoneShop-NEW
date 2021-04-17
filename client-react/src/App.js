@@ -11,6 +11,7 @@ import Login from './login/login';
 import Cart from './cart/cart';
 import Checkout from './checkout/checkout'
 import Register from './login/register'
+import LogoImg from "./images/Logo2.jpg";
 
 const socket = io.connect("http://localhost:8080");
 
@@ -58,19 +59,32 @@ export default function App() {
             <Footer/>
         </>
     )
+
+    const withLogo = (Comp) => {
+        const wrappedComp = () => (
+            <div className="d-flex flex-column">
+                <div className="header">
+                    <img className="logo" height="160" width="570" src={LogoImg} alt=""/>
+                </div>
+                <Comp count={count} onCountChange={setCount}/>
+            </div>
+        )
+
+        return wrappedComp;
+    }
     return (
 
         <BrowserRouter>
             <Switch>
                 {/* public routes go here*/}
-                <Route path="/"  exact component={() => withHeaderAndFooter(Main)}/>
+                <Route path="/"  exact component={() => withHeaderAndFooter(withLogo(Main))}/>
                 <Route path="/login" exact component={Login}/>
                 <Route path="/register" exact component={Register}/>
 
                 {/* private routes go here */}
                 <PrivateRoute>
-                    <Route path="/phone"  component={() => withHeaderAndFooter(Details)}/>
-                    <Route path="/search" component={() => withHeaderAndFooter(Search)}/>
+                    <Route path="/phone"  component={() => withHeaderAndFooter(withLogo(Details))}/>
+                    <Route path="/search" component={() => withHeaderAndFooter(withLogo(Search))}/>
                     <Route path="/cart" component={() => withHeaderAndFooter(Cart)}/>
                     <Route path="/checkout" component={() => withHeaderAndFooter(Checkout)}/>
                 </PrivateRoute>

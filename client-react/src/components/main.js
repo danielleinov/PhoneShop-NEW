@@ -8,9 +8,6 @@ export default function Main({count, onCountChange}) {
 
     return ( 
         <div>
-            <div className="header">
-                <img className="logo" height="160" width="570" src={LogoImg} alt=""/>
-            </div>
             <List count={count} onCountChange={onCountChange}/>
         </div>
     );
