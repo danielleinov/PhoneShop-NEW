@@ -69,7 +69,7 @@ export default function Details() {
                         <img className="card-img-top img-fluid" alt=""/>
                         <div className="card-body">
                             {phoneDetails.imageUrl !== "" && phoneDetails.imageUrl !== undefined ?
-                                <img className="card-img-top"
+                                <img className="card-img-top detailsImage"
                                      src={phoneDetails.imageUrl}
                                      alt="" width="400" height="500"/>
                                 :

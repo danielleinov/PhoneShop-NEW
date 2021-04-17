@@ -39,8 +39,8 @@
 }
 
 .detailsImage {
-    min-width: 200px;
-    height: auto;
+    max-width: 200px;
+    height: 250px;
 }
 
 .productDetails {
