@@ -7,6 +7,7 @@ export const environment = {
   phonesUrl: 'http://localhost:8080/api/phone',
   usersUrl: 'http://localhost:8080/api/user',
   reviewsUrl: 'http://localhost:8080/api/review',
+  ordersUrl: 'http://localhost:8080/api/order',
 };
 
 /*

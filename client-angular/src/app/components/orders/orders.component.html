@@ -1,0 +1,38 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Orders</h1>
+  <p class="mb-4">This table shows the orders registered to the system</p>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr class="text-center">
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Total Quantity</th>
+            <th>Total Price</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{order._id}}</td>
+            <td>{{order.user}}</td>
+            <td>{{order.cart['totalQuantity']}}</td>
+            <td>{{order.totalPrice}}</td>
+            <td class="text-center">
+              <button (click)="onDelete(order._id)" class="btn btn-danger btn-circle">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

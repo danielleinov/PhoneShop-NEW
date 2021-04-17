@@ -8,6 +8,7 @@ import {UpdatePhoneComponent} from "./components/update-phone/update-phone.compo
 import {UpdateReviewComponent} from "./components/update-review/update-review.component";
 import {LoginComponent} from "./components/login/login.component";
 import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
+import {OrdersComponent} from "./components/orders/orders.component";
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate : [AuthGuard] },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent, canActivate : [AuthGuard] },
   { path: 'reviews', component: ReviewsComponent, canActivate : [AuthGuard] },
   { path: 'reviews/:id', component: UpdateReviewComponent, canActivate : [AuthGuard] },
+  { path: 'orders', component: OrdersComponent, canActivate : [AuthGuard] },
   { path: 'login', component : LoginComponent}
 ];
 

@@ -6,6 +6,8 @@ import {UsersService} from "../../services/users.service";
 import {ReviewsService} from "../../services/reviews.service";
 import {Review} from "../../models/review";
 import {RealtimeService} from "../../services/realtime.service";
+import {OrdersService} from "../../services/orders.service";
+import {Order} from "../../models/order";
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +19,7 @@ export class DashboardComponent implements OnInit {
   phones: Phone[] = [];
   users: User[] = [];
   reviews: Review[] = [];
+  orders: Order[] = [];
 
   chartData = []
   activeSessionsCounter: Number;
@@ -24,6 +27,7 @@ export class DashboardComponent implements OnInit {
   constructor(private phonesService: PhonesService,
               private usersService: UsersService,
               private reviewsService: ReviewsService,
+              private ordersService: OrdersService,
               private realtimeService: RealtimeService) {
     realtimeService.currentCounter.subscribe(counter => this.activeSessionsCounter = counter);
   }
@@ -46,6 +50,11 @@ export class DashboardComponent implements OnInit {
     this.reviewsService.getReviews().subscribe(data => {
       this.reviews = data;
       this.chartData.push({"Component": "Reviews", "Count": data.length});
+    })
+
+    this.ordersService.getOrders().subscribe(data => {
+      this.orders = data;
+      this.chartData.push({"Component": "Orders", "Count": data.length});
     })
   }
 
