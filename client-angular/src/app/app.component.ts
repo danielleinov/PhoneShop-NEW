@@ -13,6 +13,10 @@ export class AppComponent {
   constructor(private authService: AuthService, private router: Router) {
   }
 
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
+
   onLogout() {
     this.authService.removeUserInfo();
     this.router.navigate(['/login']);
