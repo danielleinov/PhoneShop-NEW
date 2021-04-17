@@ -89,7 +89,7 @@ export default function Cart({count, onCountChange}) {
                                 <td/>
                                 <td/>
                                 <td><strong>Total</strong></td>
-                                <td className="text-right"><strong>{totalPrice} €</strong></td>
+                                <td className="text-right"><strong>{totalPrice} $</strong></td>
                             </tr>
                             </tbody>
                         </table>
