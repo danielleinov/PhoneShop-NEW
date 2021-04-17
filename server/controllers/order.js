@@ -16,6 +16,20 @@ module.exports.getOrders = async (req, res) => {
     res.send(orders)
 }
 
+module.exports.deleteOrderById = async (req, res) => {
+    const {id} = req.params;
+    Order.findByIdAndDelete(id, (err, docs) => {
+        if (err) {
+            res.send(err)
+        } else {
+            res.json({
+                "status": "ok",
+                "Deleted": docs
+            });
+        }
+    });
+}
+
 module.exports.getUserOrders = async (req, res) => {
     const num = parseInt(req.query.num);
     Order.aggregate([{$group: {_id: "$user", "count": { "$sum": 1 }}}, { "$match": { "count": { "$gte": num } }},
