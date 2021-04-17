@@ -10,6 +10,7 @@ const {validateRequest} = require('../middlewares/SchemaValidator');
 router.route('/').get(catchAsync(user.getUsers))
 router.route('/:id')
     .get(catchAsync(user.getUserById))
+    .patch(catchAsync(user.updateUserById))
     .delete(catchAsync(user.deleteUserById))
 
 router.post('/register', validateRequest(schemaUserRegister), catchAsync(user.register))

@@ -35,8 +35,4 @@ export class UsersComponent {
       this.load();
     });
   }
-
-  handlePanel(action: string) {
-    this.load();
-  }
 }

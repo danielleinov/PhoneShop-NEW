@@ -14,6 +14,8 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { UpdatePhoneComponent } from './components/update-phone/update-phone.component';
+import { UpdateReviewComponent } from './components/update-review/update-review.component';
+import { LoginComponent } from './components/login/login.component';
 const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
 @NgModule({
@@ -24,7 +26,9 @@ const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
     DashboardComponent,
     ReviewsComponent,
     BarChartComponent,
-    UpdatePhoneComponent
+    UpdatePhoneComponent,
+    UpdateReviewComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
