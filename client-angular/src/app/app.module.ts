@@ -17,6 +17,7 @@ import { UpdatePhoneComponent } from './components/update-phone/update-phone.com
 import { UpdateReviewComponent } from './components/update-review/update-review.component';
 import { LoginComponent } from './components/login/login.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { UnlessDirective } from './directives/unless.directive';
 const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
 @NgModule({
@@ -30,7 +31,8 @@ const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
     UpdatePhoneComponent,
     UpdateReviewComponent,
     LoginComponent,
-    OrdersComponent
+    OrdersComponent,
+    UnlessDirective
   ],
   imports: [
     BrowserModule,
