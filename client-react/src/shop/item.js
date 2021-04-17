@@ -2,6 +2,7 @@ import {Link, Redirect} from "react-router-dom";
 import React, {useEffect} from "react";
 import axios from "axios";
 import List from "./list";
+import './item.css';
 
 export default function Item({name, price, id, manufacturer, imageUrl, count, onCountChange}) {
     const fetchData = async () => {
@@ -30,16 +31,16 @@ export default function Item({name, price, id, manufacturer, imageUrl, count, on
             <div className="card h-100">
                 <Link to={'/phone/' + id}>
                     { imageUrl !== "" && imageUrl !== undefined ?
-                        <img className="card-img-top"
+                        <img className="card-img-top rounded mx-auto d-block phoneImg"
                              src={imageUrl}
-                             alt="" height="500"/>
+                             alt=""/>
                         :
                         <img className="card-img-top"
                              src="http://placehold.it/400x500"
                              alt=""/>
                     }
                 </Link>
-                <div className="card-body">
+                <div className="card-body d-flex flex-column justify-content-end">
                     <h4 className="card-title">
                         <Link to={'/phone/' + id}>{name}</Link>
                     </h4>
