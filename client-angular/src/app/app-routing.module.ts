@@ -9,6 +9,7 @@ import {UpdateReviewComponent} from "./components/update-review/update-review.co
 import {LoginComponent} from "./components/login/login.component";
 import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
 import {OrdersComponent} from "./components/orders/orders.component";
+import {OrdersForUserComponent} from "./components/orders-for-user/orders-for-user.component";
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate : [AuthGuard] },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'reviews', component: ReviewsComponent, canActivate : [AuthGuard] },
   { path: 'reviews/:id', component: UpdateReviewComponent, canActivate : [AuthGuard] },
   { path: 'orders', component: OrdersComponent, canActivate : [AuthGuard] },
+  { path: 'usersMinOrder', component: OrdersForUserComponent, canActivate : [AuthGuard] },
   { path: 'login', component : LoginComponent}
 ];
 

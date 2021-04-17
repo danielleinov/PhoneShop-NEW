@@ -1,0 +1,46 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Users With Minimum Orders</h1>
+  <p class="mb-4">This table shows all users with the provided minimum number of orders</p>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="container text-center">
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
+          <div class="input-group">
+            <input disabled class="form-control-plaintext small" placeholder="Minimum #orders:"
+                   aria-label="SearchByName">
+            <input type="number" class="form-control bg-light small" placeholder="# orders"
+                   aria-label="SearchByMaxPrice" [defaultValue]="0" #intMinOrdersNum>
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button" (click)="onSearch(intMinOrdersNum.valueAsNumber)">
+                <i class="fas fa-search fa-sm"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <hr/>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr class="text-center">
+            <th>User ID</th>
+            <th>User Name</th>
+            <th>#Orders</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of usersWithMinOrders">
+            <td>{{user['_id']}}</td>
+            <td>{{user['user'][0]['name']}}</td>
+            <td>{{user['count']}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
