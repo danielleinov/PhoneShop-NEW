@@ -33,8 +33,6 @@ export default function Cart({count, onCountChange}) {
         setData(response.data)
     }
     const createOrder = (totalPrice, cart) => {
-        console.log(totalPrice)
-        console.log(cart)
         axios.post(
             `http://localhost:8080/api/order`,
             {
@@ -43,7 +41,6 @@ export default function Cart({count, onCountChange}) {
             }
 
         ).then(() => {
-            console.log("change")
             onCountChange(0)
             localStorage.removeItem("cart");
             localStorage.setItem("cartTotal", 0);
@@ -70,7 +67,6 @@ export default function Cart({count, onCountChange}) {
                             <tbody>
                             {
                                 data.phones.map((data, key) => {
-                                    console.log(data)
                                     return([
                                         <tr>
 

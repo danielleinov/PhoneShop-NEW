@@ -28,11 +28,8 @@ module.exports.getPhones = async (req, res) => {
 }
 
 module.exports.searchPhones = async (req, res) => {
-    console.log(req.query)
-    console.log(req.query.maxPrice === '')
     const name = req.query.name
     const maxPrice = parseInt(req.query.maxPrice === '' ? Number.MAX_SAFE_INTEGER : req.query.maxPrice)
-    console.log(req.query.maxPrice === '')
     const manufacturer = req.query.manufacturer
     const phone = await Phone.find({
         'displayName': {

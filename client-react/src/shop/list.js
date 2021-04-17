@@ -18,9 +18,6 @@ export default function List({q = '', count, onCountChange}) {
             history.push('/');
         else
         {
-            console.log(searchByName)
-            console.log(searchByMaxPrice)
-            console.log(searchByManufacturer)
             history.push('/search?name=' + searchByName + '&maxPrice=' + searchByMaxPrice + '&manufacturer=' + searchByManufacturer);
         }
 

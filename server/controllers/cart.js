@@ -10,13 +10,11 @@ module.exports.addCart = async (req, res) => {
         //cart exists for user
         let itemIndex = cart.phones.findIndex(p => p.phone._id == phoneId);
 
-        console.log(itemIndex)
         cart.totalQuantity += quantity;
         if (itemIndex > -1) {
 
             //product exists in the cart, update the quantity
             let productItem = cart.phones[itemIndex];
-            console.log(productItem)
             productItem.quantity += quantity;
             productItem.totalPricePhone = phone.price * productItem.quantity;
             cart.phones[itemIndex] = productItem;
@@ -63,7 +61,6 @@ module.exports.deletePhoneFromCart = async (req, res) => {
         oldCart.phones.splice(itemIndex, itemIndex + 1);
     }
     oldCart.totalQuantity -= 1;
-    console.log(oldCart)
     const cart = await Cart.saveAndPopulate(oldCart);
     return res.json(cart);
 }

@@ -11,7 +11,6 @@ export default function Item({name, price, id, manufacturer, imageUrl, count, on
         }
 
         const userId = JSON.parse(localStorage.getItem("user"))._id;
-        console.log(userId)
         const response = await axios.post(
             "http://localhost:8080/api/cart",
             {

@@ -3,8 +3,6 @@ const Cart = require('../models/cart')
 
 module.exports.addOrder = async (req, res) => {
     const {totalPrice, cart} = req.body;
-    console.log(totalPrice)
-    console.log(cart)
     await Cart.findByIdAndDelete(cart._id);
     const order = new Order({totalPrice: totalPrice, cart: cart});
     await order.save();
