@@ -28,20 +28,22 @@ module.exports.getPhones = async (req, res) => {
 }
 
 module.exports.searchPhones = async (req, res) => {
-    const name = req.query.name
-    const maxPrice = parseInt(req.query.maxPrice === '' ? Number.MAX_SAFE_INTEGER : req.query.maxPrice)
-    const manufacturer = req.query.manufacturer
+    const name = req.query.name === undefined ? '' : req.query.name
+    const maxPrice = parseInt(req.query.maxPrice === '' || req.query.maxPrice === undefined ? Number.MAX_SAFE_INTEGER : req.query.maxPrice)
+    const manufacturer = req.query.manufacturer === undefined ? '' : req.query.manufacturer
+
     const phone = await Phone.find({
         'displayName': {
             $regex: `.*${name}.*`, "$options": "i"
         },
         'price': {
-            $lt: maxPrice
+            $lte: maxPrice
         },
         'manufacturer': {
             $regex: `.*${manufacturer}.*`, "$options": "i"
         },
     });
+
     if (!phone) {
         return res.status(404).send('That phone Not found');
     }
