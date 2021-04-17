@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import axios from "axios";
 import './details.css';
+import LogoImg from "../images/Logo2.jpg";
 
 const SUBMITED_STATUS = {
     NOT_SUBMITED: 'not-submited',
@@ -66,16 +67,16 @@ export default function Details() {
             </div>
             <div class="card mr-4">
                 { phoneDetails.imageUrl !== "" && phoneDetails.imageUrl !== undefined ?
-                    <img className="card-img-top"
+                    <img className="card-img-top detailsImage"
                          src={phoneDetails.imageUrl}
-                         alt="" width="400" height="500"/>
+                         alt=""/>
                     :
                     <img className="card-img-top"
                          src="http://placehold.it/400x500"
                          alt=""/>
                 }
             </div>
-            <div className="card mr-4" >
+            <div className="card mr-4 productDetails" >
                 <div className="card-body">
                     <h3 className="card-title">{phoneDetails.displayName}</h3>
                     <h4>{phoneDetails.price}$</h4>
@@ -86,8 +87,8 @@ export default function Details() {
                 </div>
             </div>
             {/* /.card */}
-            <div className="card card-outline-secondary my-4" >
-                <div className="card-header">
+            <div className="card card-outline-secondary my-4 productReviews" >
+                <div className="card-header boldText">
                     Product Reviews
                 </div>
                 <div className="card-body overflow-auto">
@@ -95,7 +96,7 @@ export default function Details() {
                         phoneDetails.reviews.map((data, index) => {
                             return (
                                 <div key={index}>
-                                    <p>{data.content}</p>
+                                    <p className="reviewsText">{data.content}</p>
                                     <small className="text-muted">Posted by {data.author} on {data.date}</small>
                                     <hr />
                                 </div>

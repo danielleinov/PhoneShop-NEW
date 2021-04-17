@@ -33,6 +33,30 @@
     height: 100%;
 }
 
+.productReviews {
+    min-height: 300px;
+    min-width: 200px;
+}
+
+.detailsImage {
+    min-width: 200px;
+    height: auto;
+}
+
+.productDetails {
+    min-height: 300px;
+    min-width: 200px;
+    background-color: #D3D3D3;
+}
+
+.reviewsText {
+    color: #0b2e13;
+}
+
+.boldText {
+    font-weight: bold;
+}
+
 /*@media (min-width: 1px) {*/
 /*    .col-lg-9 {*/
 /*        !*-ms-flex: 0 0 75%;*!*/
