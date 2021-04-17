@@ -44,6 +44,8 @@ export default function Details() {
     }, [reviewsCount]);
 
     const SubmitReview = async e => {
+        if(reviewContent.length < 3 || reviewContent.length > 50)
+            return alert("Review length is wrong")
         setLoading(true)
         const review = {phoneId: phoneId, content: reviewContent, author: user.name};
         axios.post("http://localhost:8080/api/review/", review)
