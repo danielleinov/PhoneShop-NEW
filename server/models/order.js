@@ -7,6 +7,10 @@ schema = new mongoose.Schema({
     },
     cart: {
         type: Object
+    },
+    user:  {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
 });
 

@@ -36,7 +36,8 @@ export default function Cart({count, onCountChange}) {
             `http://localhost:8080/api/order`,
             {
                 totalPrice: totalPrice,
-                cart: cart
+                cart: cart,
+                userId: JSON.parse(localStorage.getItem("user"))._id
             }
         ).then(() => {
             onCountChange(0)
