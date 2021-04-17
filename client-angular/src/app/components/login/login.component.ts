@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
       .then((response) => {
         this.authService.setUserInfo({'user': response});
         this.router.navigate(['']);
-      })
+      }, error => {
+        alert("You entered an incorrect username/password")
+      });
   }
 }
