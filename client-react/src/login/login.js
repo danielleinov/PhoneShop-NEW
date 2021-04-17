@@ -1,6 +1,6 @@
 import "./login.css"
 import React, {useEffect, useState} from "react";
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import axios from "axios";
 
 export default function Login({count, onCountChange}) {
@@ -66,6 +66,9 @@ export default function Login({count, onCountChange}) {
                             </div>
                             <div className="form-group">
                                 <input type="submit" defaultValue="Login" className="btn float-right login_btn"/>
+                            </div>
+                            <div className="form-group">
+                                <Link to={'/register'}><input type="register" defaultValue="Register" className="btn float-right login_btn"/></Link>
                             </div>
                         </div>
                     </div>

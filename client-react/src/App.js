@@ -10,6 +10,7 @@ import Search from './components/search';
 import Login from './login/login';
 import Cart from './cart/cart';
 import Checkout from './checkout/checkout'
+import Register from './login/register'
 
 const socket = io.connect("http://localhost:8080");
 
@@ -64,6 +65,7 @@ export default function App() {
                 {/* public routes go here*/}
                 <Route path="/"  exact component={() => withHeaderAndFooter(Main)}/>
                 <Route path="/login" exact component={Login}/>
+                <Route path="/register" exact component={Register}/>
 
                 {/* private routes go here */}
                 <PrivateRoute>
