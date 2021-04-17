@@ -17,6 +17,16 @@ export class PhonesService {
     return this.http.get<Phone[]>(this.phonesUrl);
   }
 
+  searchPhones(name: string, manufacturer: string, maxPrice: number): Observable<Phone[]> {
+    return this.http.get<Phone[]>(this.phonesUrl + '/search', {
+      params: {
+        name: name,
+        manufacturer: manufacturer,
+        maxPrice: maxPrice.toString()
+      }
+    });
+  }
+
   addPhone(displayName: string, manufacturer: string, imageUrl: string, price: number, discount: number): Observable<Phone> {
     return this.http.post<Phone>(this.phonesUrl, {
       displayName: displayName,

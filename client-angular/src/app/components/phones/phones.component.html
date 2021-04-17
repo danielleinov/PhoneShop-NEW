@@ -21,6 +21,24 @@
           <button type="button" class="btn btn-danger">Delete All</button>
         </div>
       </div>
+      <hr>
+      <div class="container text-center">
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
+          <div class="input-group">
+            <input type="text" class="form-control bg-light small" placeholder="Search by name"
+                   aria-label="SearchByName" #intName>
+            <input type="text" class="form-control bg-light small" placeholder="Search by manufacturer"
+                   aria-label="SearchByManufacturer" #intManufacturer>
+            <input type="number" class="form-control bg-light small" placeholder="Search by max price"
+                   aria-label="SearchByMaxPrice" #intMaxPrice>
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button" (click)="onSearch(intName.value, intManufacturer.value, intMaxPrice.valueAsNumber)">
+                <i class="fas fa-search fa-sm"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="card-body">
       <div class="table-responsive">
