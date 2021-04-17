@@ -6,14 +6,17 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {ReviewsComponent} from "./components/reviews/reviews.component";
 import {UpdatePhoneComponent} from "./components/update-phone/update-phone.component";
 import {UpdateReviewComponent} from "./components/update-review/update-review.component";
+import {LoginComponent} from "./components/login/login.component";
+import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'phones', component: PhonesComponent },
-  { path: 'phones/:id', component: UpdatePhoneComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'reviews', component: ReviewsComponent },
-  { path: 'reviews/:id', component: UpdateReviewComponent }
+  { path: '', component: DashboardComponent, canActivate : [AuthGuard] },
+  { path: 'phones', component: PhonesComponent, canActivate : [AuthGuard] },
+  { path: 'phones/:id', component: UpdatePhoneComponent, canActivate : [AuthGuard] },
+  { path: 'users', component: UsersComponent, canActivate : [AuthGuard] },
+  { path: 'reviews', component: ReviewsComponent, canActivate : [AuthGuard] },
+  { path: 'reviews/:id', component: UpdateReviewComponent, canActivate : [AuthGuard] },
+  { path: 'login', component : LoginComponent}
 ];
 
 @NgModule({
