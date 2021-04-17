@@ -80,7 +80,7 @@ export default function List({q = '', count, onCountChange}) {
             <div className="row">
                 {
                     items.length > 0 ? items.map((data, key) => {
-                        return <Item name={data.displayName} price={data.price} key={key} id={data._id}
+                        return <Item name={data.displayName} price={data.price} discount={data.discount} key={key} id={data._id}
                                      manufacturer={data.manufacturer} imageUrl={data.imageUrl} count={count}
                                      onCountChange={onCountChange}/>;
                     }) : ""

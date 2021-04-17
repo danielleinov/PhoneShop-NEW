@@ -4,7 +4,7 @@ import axios from "axios";
 import List from "./list";
 import './item.css';
 
-export default function Item({name, price, id, manufacturer, imageUrl, count, onCountChange}) {
+export default function Item({name, price, discount, id, manufacturer, imageUrl, count, onCountChange}) {
     const fetchData = async () => {
         if(JSON.parse(localStorage.getItem("user")) == undefined) {
             return (alert("Need to login"))
@@ -44,6 +44,7 @@ export default function Item({name, price, id, manufacturer, imageUrl, count, on
                         <Link to={'/phone/' + id}>{name}</Link>
                     </h4>
                     <h5>${price}</h5>
+                    <p className="d-inline p-1 m-2 bg-danger text-white">{discount}% OFF</p>
                     <p className="card-text">{manufacturer}</p>
                 </div>
                 <div className="card-footer">
