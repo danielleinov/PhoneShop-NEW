@@ -16,8 +16,7 @@ export default function List({q = '', count, onCountChange}) {
     const doSearch = (e) => {
         if (searchByName == "" && searchByMaxPrice == "" && searchByManufacturer == "")
             history.push('/');
-        else
-        {
+        else {
             history.push('/search?name=' + searchByName + '&maxPrice=' + searchByMaxPrice + '&manufacturer=' + searchByManufacturer);
         }
 
@@ -79,15 +78,13 @@ export default function List({q = '', count, onCountChange}) {
             <hr/>
 
             <div className="row">
-                <div className="row">
-                    {
-                        items.length > 0 ? items.map((data, key) => {
-                            return <Item name={data.displayName} price={data.price} key={key} id={data._id}
-                                         manufacturer={data.manufacturer} imageUrl={data.imageUrl} count={count}
-                                         onCountChange={onCountChange}/>;
-                        }) : ""
-                    }
-                </div>
+                {
+                    items.length > 0 ? items.map((data, key) => {
+                        return <Item name={data.displayName} price={data.price} key={key} id={data._id}
+                                     manufacturer={data.manufacturer} imageUrl={data.imageUrl} count={count}
+                                     onCountChange={onCountChange}/>;
+                    }) : ""
+                }
             </div>
         </div>
 
