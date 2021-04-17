@@ -2,11 +2,6 @@ import React, {useState} from "react";
 import axios from "axios";
 import './details.css';
 
-const SUBMITED_STATUS = {
-    NOT_SUBMITED: 'not-submited',
-    SUBMITED_SUCCESSFULLY: 'submited-successfully'
-}
-
 export default function Details() {
 
     const phoneId = window.location.pathname.split("/")[2];
@@ -15,7 +10,7 @@ export default function Details() {
     const [reviewContent, setReviewContent] = useState("");
     const [user, setUser] = useState();
     const [loading, setLoading] = useState(false);
-    const [submitedStatus, setSubmitedStatus] = useState(SUBMITED_STATUS.NOT_SUBMITED);
+    const [reviewsCount, setReviewsCount] = useState(0);
 
     React.useEffect(() => {
         const index = window.location.toString().lastIndexOf('/') + 1;
@@ -29,30 +24,30 @@ export default function Details() {
 
         fetch('http://localhost:8080/api/phone/' + id)
             .then((response) => response.json())
-            .then((data) => setPhoneDetails(data));
+            .then((data) => {
+                setPhoneDetails(data);
+                setReviewsCount(data['reviews'].length);
+            });
     }, []);
 
     React.useEffect(() => {
-        if (submitedStatus === SUBMITED_STATUS.SUBMITED_SUCCESSFULLY) {
-            const index = window.location.toString().lastIndexOf('/') + 1;
-            const id = window.location.toString().substring(index);
+        const index = window.location.toString().lastIndexOf('/') + 1;
+        const id = window.location.toString().substring(index);
 
-            fetch('http://localhost:8080/api/phone/' + id)
-                .then((response) => response.json())
-                .then((data) => setPhoneDetails(data));
-            setSubmitedStatus(SUBMITED_STATUS.NOT_SUBMITED);
-            setLoading(false)
-        }
-    }, [submitedStatus]);
+        fetch('http://localhost:8080/api/phone/' + id)
+            .then((response) => response.json())
+            .then((data) => {
+                setPhoneDetails(data);
+                setReviewsCount(data['reviews'].length);
+                setLoading(false)
+            });
+    }, [reviewsCount]);
 
     const SubmitReview = async e => {
         setLoading(true)
         const review = {phoneId: phoneId, content: reviewContent, author: user.name};
-        await axios.post(
-            "http://localhost:8080/api/review/",
-            review
-        );
-        setSubmitedStatus(SUBMITED_STATUS.SUBMITED_SUCCESSFULLY);
+        axios.post("http://localhost:8080/api/review/", review)
+            .then(() => setReviewsCount(reviewsCount + 1));
     }
 
     if (phoneDetails === null)
