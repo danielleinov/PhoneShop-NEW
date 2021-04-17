@@ -40,7 +40,7 @@ export default function Login({count, onCountChange}) {
         <form className="login" onSubmit={handleSubmit}>
             <div className="container">
                 <div className="d-flex justify-content-center h-100">
-                    <div className="card">
+                    <div className="loginForm">
                         <div className="card-header">
                             <h3>Sign In</h3>
                             <div className="d-flex justify-content-end social_icon">
