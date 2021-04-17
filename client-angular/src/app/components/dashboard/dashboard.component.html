@@ -11,7 +11,7 @@
             <div class="h5 mb-0 font-weight-bold text-gray-800">{{phones.length}}</div>
           </div>
           <div class="col-auto">
-            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+            <i class="fas fa-mobile-alt fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
             <div class="h5 mb-0 font-weight-bold text-gray-800">{{reviews.length}}</div>
           </div>
           <div class="col-auto">
-            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            <i class="fas fa-comment-alt fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
             <div class="h5 mb-0 font-weight-bold text-gray-800">{{users.length}}</div>
           </div>
           <div class="col-auto">
-            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            <i class="fas fa-users fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
@@ -78,6 +78,9 @@
     <div class="card border-info border-bottom-info shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
+          <div class="col-auto">
+            <i class="fas fa-edit fa-2x text-gray-300"></i>
+          </div>
           <div class="col mr-2 text-center">
             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
               Current Active Sessions
@@ -85,17 +88,19 @@
             <div class="h5 mb-0 font-weight-bold text-gray-800">{{activeSessionsCounter}}</div>
           </div>
           <div class="col-auto">
-            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            <i class="fas fa-users fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-warning mb-4" data-toggle="modal" data-target="#updateActiveUsers">Update</button>
 </div>
 
-<app-bar-chart *ngIf="chartData.length == 4" [data]="chartData"
-               [title]="'Components Distribution Graph'"></app-bar-chart>
+<hr/>
+<div class="text-center">
+  <app-bar-chart *ngIf="chartData.length == 4" [data]="chartData"
+                 [title]="'Components Distribution Graph'"></app-bar-chart>
+</div>
 
 <!-- Update Active Users Modal -->
 <div class="modal fade" id="updateActiveUsers" tabindex="-1" role="dialog" aria-labelledby="updateActiveUsers"
@@ -111,8 +116,9 @@
       <div class="modal-body">
         <form>
           <div class="form-row">
-              <label for="activeSessions" class="col-form-label col-md-3">New Value:</label>
-              <input type="number" class="form-control col-md-3" id="activeSessions" [defaultValue]="activeSessionsCounter" #inpActiveSessions/>
+            <label for="activeSessions" class="col-form-label col-md-3">New Value:</label>
+            <input type="number" class="form-control col-md-3" id="activeSessions"
+                   [defaultValue]="activeSessionsCounter" #inpActiveSessions/>
           </div>
         </form>
       </div>

@@ -12,7 +12,7 @@ import {Order} from "../../models/order";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css', '../../vendor/fontawesome-free/css/all.min.css']
 })
 export class DashboardComponent implements OnInit {
 
