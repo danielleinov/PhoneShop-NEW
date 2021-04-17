@@ -23,6 +23,10 @@ export class AuthService {
     localStorage.setItem('userInfo', JSON.stringify(user));
   }
 
+  public removeUserInfo() {
+    localStorage.removeItem('userInfo');
+  }
+
   public validate(email, password) {
     return this.http.post(this.usersUrl + '/login', {'username': email, 'password': password}).toPromise()
   }
