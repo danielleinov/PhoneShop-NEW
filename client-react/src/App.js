@@ -83,7 +83,7 @@ export default function App() {
 
                 {/* private routes go here */}
                 <PrivateRoute>
-                    <Route path="/phone"  component={() => withHeaderAndFooter(withLogo(Details))}/>
+                    <Route path="/phone"  component={() => withHeaderAndFooter(Details)}/>
                     <Route path="/search" component={() => withHeaderAndFooter(withLogo(Search))}/>
                     <Route path="/cart" component={() => withHeaderAndFooter(Cart)}/>
                     <Route path="/checkout" component={() => withHeaderAndFooter(Checkout)}/>
