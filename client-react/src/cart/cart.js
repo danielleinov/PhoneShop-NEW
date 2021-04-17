@@ -21,15 +21,14 @@ export default function Cart({count, onCountChange}) {
     });
     const deletePhone = async (cartId, phoneId) => {
         const response = await axios.delete(
-             `http://localhost:8080/api/cart/${cartId}`,
+            `http://localhost:8080/api/cart/${cartId}`,
             {
                 data: {
                     phoneId: phoneId,
                     quantity: 1
                 }
             }
-
-         );
+        );
         setData(response.data)
     }
     const createOrder = (totalPrice, cart) => {
@@ -39,7 +38,6 @@ export default function Cart({count, onCountChange}) {
                 totalPrice: totalPrice,
                 cart: cart
             }
-
         ).then(() => {
             onCountChange(0)
             localStorage.removeItem("cart");
@@ -57,34 +55,39 @@ export default function Cart({count, onCountChange}) {
                         <table className="table table-striped">
                             <thead>
                             <tr>
-                                <th scope="col"> </th>
+                                <th scope="col"></th>
                                 <th scope="col">Product</th>
                                 <th scope="col" className="text-center">Quantity</th>
                                 <th scope="col" className="text-right">Price</th>
-                                <th> </th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             {
                                 data.phones.map((data, key) => {
-                                    return([
+                                    return ([
                                         <tr>
 
-                                            <td><img src={data.phone.imageUrl} /> </td>
+                                            <td><img src={data.phone.imageUrl}/></td>
                                             <td key={key}>{data.phone.displayName}</td>
                                             <td className="text-right">{data.quantity}</td>
                                             <td className="text-right">{data.totalPricePhone} €</td>
-                                            <td className="text-right"><button onClick={()=>{deletePhone(cartId,data.phone._id)}} className="btn btn-sm btn-danger"><i className="fa fa-trash" /> </button> </td>
+                                            <td className="text-right">
+                                                <button onClick={() => {
+                                                    deletePhone(cartId, data.phone._id)
+                                                }} className="btn btn-sm btn-danger">
+                                                    Remove
+                                                </button>
+                                            </td>
                                         </tr>
                                     ])
 
                                 })
                             }
                             <tr>
-                                <td />
-                                <td />
-                                <td />
-                                <td />
+                                <td/>
+                                <td/>
+                                <td/>
                                 <td><strong>Total</strong></td>
                                 <td className="text-right"><strong>{totalPrice} €</strong></td>
                             </tr>
@@ -95,10 +98,17 @@ export default function Cart({count, onCountChange}) {
                 <div className="col mb-2">
                     <div className="row">
                         <div className="col-sm-12  col-md-6">
-                            <Link to={'/'}><button className="btn btn-block btn-light">Continue Shopping</button></Link>
+                            <Link to={'/'}>
+                                <button className="btn btn-block btn-light">Continue Shopping</button>
+                            </Link>
                         </div>
                         <div className="col-sm-12 col-md-6 text-right">
-                            <Link to={'/checkout'}><button onClick={()=>{createOrder(totalPrice,data)}} className="btn btn-lg btn-block btn-success text-uppercase">Checkout</button></Link>
+                            <Link to={'/checkout'}>
+                                <button onClick={() => {
+                                    createOrder(totalPrice, data)
+                                }} className="btn btn-lg btn-block btn-success text-uppercase">Checkout
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

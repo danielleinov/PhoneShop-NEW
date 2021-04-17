@@ -5,7 +5,7 @@ import "./header.css";
 export default function Header({count, onCountChange}) {
 
     const onLogout = (e) => {
-        localStorage.removeItem('user');
+        localStorage.clear();
     }
 
     const route = JSON.parse(localStorage.getItem("cart")) ? `/cart/${JSON.parse(localStorage.getItem("cart"))._id}` : ""
